@@ -6,6 +6,8 @@ services:
     command:
     - node
     - index.js
+    - -jaegerServiceName
+    - mjml-api
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: mjml.vibioh.fr'

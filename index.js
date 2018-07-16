@@ -2,7 +2,35 @@
 
 const app = require('express')();
 const bodyParser = require('body-parser');
+const opentracing = require('express-opentracing');
+const jaeger = require('jaeger-client');
 const mjml2html = require('mjml');
+
+const argv = require('minimist')(process.argv.slice(2));
+
+if (argv.jaegerServiceName) {
+  const tracer = jaeger.initTracer({
+    serviceName: argv.jaegerServiceName,
+    sampler: {
+      type: 'const',
+      param: 1,
+    },
+    reporter: {
+      logSpans: false,
+      flushIntervalMs: 1000,
+      agentHost: argv.jaegerHost || 'jaeger',
+      agentPort: argv.jaegerPort || '6831',
+    }
+  });
+
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/health')) {
+      return next()
+    }
+
+    opentracing.default({ tracer })(req, res, next);
+  });
+}
 
 app.use(bodyParser.json());
 
