@@ -22,8 +22,8 @@ module.exports = function(app, options, excludePaths = []) {
   });
 
   app.use((req, res, next) => {
-    if (excludePaths.filter(e => req.path.startsWith(a)).length) {
-      return next()
+    if (excludePaths.filter(e => req.path.startsWith(e)).length) {
+      return next();
     }
 
     opentracing.default({ tracer: tracer })(req, res, next);
