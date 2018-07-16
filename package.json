@@ -15,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.18.3",
-    "bunyan": "1.8.12",
     "express": "4.16.3",
     "express-opentracing": "0.1.1",
     "jaeger-client": "3.11.0",

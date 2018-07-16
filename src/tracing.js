@@ -1,6 +1,5 @@
 const opentracing = require('express-opentracing');
 const jaeger = require('jaeger-client');
-const bunyan = require('bunyan');
 
 console.log('[opentracing] Initializing jaeger');
 
@@ -13,12 +12,13 @@ module.exports = function(app, options, excludePaths = []) {
     },
     reporter: {
       logSpans: false,
-      flushIntervalMs: 1000,
-      agentHost: options.jaegerHost || 'jaeger',
-      agentPort: options.jaegerPort || 6831,
+      agentHost: 'jaeger',
     },
   }, {
-    logger: bunyan.createLogger({ name: 'tracing' }),
+    logger: {
+      info: msg => console.info(msg),
+      error: msg => console.error(msg),
+    },
   });
 
   app.use((req, res, next) => {

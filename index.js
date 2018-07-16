@@ -11,16 +11,6 @@ const options = require('yargs')
     type: 'String',
     describe: 'Opentracing Service Name',
   })
-  .options('jaegerHost', {
-    required: false,
-    type: 'String',
-    describe: 'Jaeger Remote Host',
-  })
-  .options('jaegerPort', {
-    required: false,
-    type: 'Number',
-    describe: 'Jaeger Remote Port',
-  })
   .help('help')
   .strict().argv;
 
