@@ -6,6 +6,10 @@ const mjml2html = require('mjml');
 
 app.use(bodyParser.json());
 
+app.get('/health', function (req, res) {
+  res.sendStatus(200);
+});
+
 app.post('/', function (req, res) {
   const output = mjml2html(req.body.mjml);
 

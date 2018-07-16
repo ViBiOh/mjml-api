@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   api:
@@ -16,6 +16,8 @@ services:
       traefik.frontend.rateLimit.rateSet.first.period: '60s'
       traefik.frontend.rateLimit.rateSet.first.average: '100'
       traefik.frontend.rateLimit.rateSet.first.burst: '200'
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
     logging:
       driver: json-file
       options:
