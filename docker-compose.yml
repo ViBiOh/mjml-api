@@ -3,6 +3,9 @@ version: '2'
 services:
   auth:
     image: vibioh/mjml-api
+    command:
+    - node
+    - index.js
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: mjml.vibioh.fr'
