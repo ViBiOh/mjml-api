@@ -1,8 +1,6 @@
 const opentracing = require('express-opentracing');
 const jaeger = require('jaeger-client');
 
-console.log('[opentracing] Initializing jaeger');
-
 module.exports = function(app, options, excludePaths = []) {
   const tracer = jaeger.initTracer({
     serviceName: options.tracingName,
