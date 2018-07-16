@@ -1,0 +1,38 @@
+jobs:
+  include:
+  - stage: Build
+
+    language: node_js
+    sudo: required
+    services:
+    - docker
+    node_js: 10
+    script: make
+    after_success: |
+      if [ "${TRAVIS_BRANCH}" != "master" ]; then
+        make docker-delete
+      fi
+
+  - stage: Deploy
+
+    script: |
+      make docker-promote
+      VERSION=latest make docker-push
+      make docker-delete
+
+      sed \
+        -e "s|\${HTTP_PASSWORD}|${HTTP_PASSWORD}|g" \
+        docker-compose.yml > docker-compose-env.yml
+    deploy:
+    - provider: script
+      skip_cleanup: true
+      script: "curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/deploy/mjml/ --data-binary @docker-compose-env.yml"
+
+stages:
+  - Build
+  - Test
+  - name: Deploy
+    if: branch = master
+
+notifications:
+  email: false

@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  auth:
+    image: vibioh/mjml-api
+    labels:
+      traefik.frontend.passHostHeader: 'true'
+      traefik.frontend.rule: 'Host: mjml.vibioh.fr'
+      traefik.protocol: 'http'
+      traefik.port: '3000'
+      traefik.frontend.auth.basic: ${HTTP_PASSWORD}
+      traefik.frontend.rateLimit.extractorFunc: 'client.ip'
+      traefik.frontend.rateLimit.rateSet.first.period: '60s'
+      traefik.frontend.rateLimit.rateSet.first.average: '100'
+      traefik.frontend.rateLimit.rateSet.first.burst: '200'
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+    group_add:
+    - '${DOCKER_GROUP}'
+    restart: on-failure:5
+    read_only: true
+    cpu_shares: 128
+    mem_limit: 134217728
+    security_opt:
+    - no-new-privileges
