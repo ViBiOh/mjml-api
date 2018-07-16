@@ -6,16 +6,33 @@ const opentracing = require('express-opentracing');
 const jaeger = require('jaeger-client');
 const mjml2html = require('mjml');
 
-const argv = require('minimist')(process.argv.slice(2));
+const options = require('yargs')
+  .reset()
+  .options('tracingName', {
+    required: false,
+    type: 'String',
+    describe: 'Opentracing Service Name',
+  })
+  .options('jaegerHost', {
+    required: false,
+    type: 'String',
+    describe: 'Jaeger Remote Host',
+  })
+  .options('jaegerPort', {
+    required: false,
+    type: 'String',
+    describe: 'Jaeger Remote Port',
+  })
+  .help('help')
+  .strict().argv;
 
-console.dir(argv);
-console.dir(process.argv);
+console.dir(options);
 
-if (argv.tracingName) {
+if (options.tracingName) {
   console.log('[opentracing] Initializing jaeger');
 
   const tracer = jaeger.initTracer({
-    serviceName: argv.tracingName,
+    serviceName: options.tracingName,
     sampler: {
       type: 'const',
       param: 1,
@@ -23,8 +40,8 @@ if (argv.tracingName) {
     reporter: {
       logSpans: false,
       flushIntervalMs: 1000,
-      agentHost: argv.jaegerHost || 'jaeger',
-      agentPort: argv.jaegerPort || '6831',
+      agentHost: options.jaegerHost || 'jaeger',
+      agentPort: options.jaegerPort || '6831',
     }
   });
 
