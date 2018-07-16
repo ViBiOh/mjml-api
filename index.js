@@ -8,6 +8,9 @@ const mjml2html = require('mjml');
 
 const argv = require('minimist')(process.argv.slice(2));
 
+console.dir(argv);
+console.dir(process.argv);
+
 if (argv.tracingName) {
   console.log('[opentracing] Initializing jaeger');
 
