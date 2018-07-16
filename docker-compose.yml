@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  auth:
+  api:
     image: vibioh/mjml-api
     command:
     - node
