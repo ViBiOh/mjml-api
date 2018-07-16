@@ -26,7 +26,7 @@ const options = require('yargs')
 
 app.use(bodyParser.json());
 if (options.tracingName) {
-  require('./src/tracing.js')(app, options)
+  require('./src/tracing.js')(app, options, ['/health'])
 }
 
 app.get('/health', function (req, res) {
@@ -34,9 +34,7 @@ app.get('/health', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-  const output = mjml2html(req.body.mjml);
-
-  res.send(output)
+  res.send(mjml2html(req.body.mjml))
 });
 
 app.listen(3000, () => console.log('Listening on port 3000'));
