@@ -4,7 +4,7 @@ services:
   api:
     image: vibioh/mjml-api
     command:
-    - -tracingName
+    - --tracingName
     - mjml
     labels:
       traefik.frontend.passHostHeader: 'true'
