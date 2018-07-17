@@ -8,12 +8,12 @@ const mjml2html = require('mjml');
 function init(app) {
   app.use(bodyParser.json());
 
-  app.get('/health', function (req, res) {
+  app.get('/health', (req, res) => {
     res.sendStatus(200);
   });
 
-  app.post('/', function (req, res) {
-    res.send(mjml2html(req.body.mjml))
+  app.post('/', (req, res) => {
+    res.send(mjml2html(req.body.mjml));
   });
 }
 

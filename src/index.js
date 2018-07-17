@@ -2,9 +2,9 @@
 
 import express from 'express';
 import yargs from 'yargs';
-import server from './server.js';
-import app from './app.js';
-import tracing from './tracing.js';
+import server from './server';
+import app from './app';
+import tracing from './tracing';
 
 /**
  * Get options from yargs.

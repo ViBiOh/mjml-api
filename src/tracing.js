@@ -1,4 +1,4 @@
-import middleware from'express-opentracing';
+import middleware from 'express-opentracing';
 import { initTracer } from 'jaeger-client';
 
 /**
@@ -38,34 +38,38 @@ function init(app, options, excludePaths = []) {
     return;
   }
 
-  const tracer = initTracer({
-    serviceName: options.tracingName,
-    sampler: {
-      type: 'const',
-      param: 1,
+  const tracer = initTracer(
+    {
+      serviceName: options.tracingName,
+      sampler: {
+        type: 'const',
+        param: 1,
+      },
+      reporter: {
+        logSpans: false,
+        agentHost: options.jaegerHost,
+        agentPort: options.jaegerPort,
+      },
     },
-    reporter: {
-      logSpans: false,
-      agentHost: options.jaegerHost,
-      agentPort: options.jaegerPort,
+    {
+      logger: {
+        info: msg => console.info(msg),
+        error: msg => console.error(msg),
+      },
     },
-  }, {
-    logger: {
-      info: msg => console.info(msg),
-      error: msg => console.error(msg),
-    },
-  });
+  );
 
+  // eslint-disable-next-line consistent-return
   app.use((req, res, next) => {
     if (excludePaths.filter(e => req.path.startsWith(e)).length) {
       return next();
     }
 
-    middleware({ tracer: tracer })(req, res, next);
+    middleware({ tracer })(req, res, next);
   });
 }
 
 export default {
   init,
   args,
-}
+};
