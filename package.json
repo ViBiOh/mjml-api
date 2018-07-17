@@ -5,7 +5,6 @@
   "repository": "https://github.com/ViBiOh/mjml-api",
   "main": "dist/index.js",
   "scripts": {
-    "postinstall": "ln -f -s pre-commit .git/hooks/pre-commit",
     "format": "./node_modules/.bin/prettier --write src/*.js",
     "lint": "./node_modules/.bin/eslint --fix src/",
     "prebuild": "npm run format && npm run lint",
