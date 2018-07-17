@@ -1,5 +1,5 @@
 import middleware from'express-opentracing';
-import initTracer from 'jaeger-client';
+import { initTracer } from 'jaeger-client';
 
 /**
  * Args definition for tracing
