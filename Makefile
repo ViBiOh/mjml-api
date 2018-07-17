@@ -1,9 +1,12 @@
 VERSION ?= $(shell git log --pretty=format:'%h' -n 1)
 APP_NAME := mjml-api
 
-default: docker
+default: js docker
 
 docker: docker-build docker-push
+
+js:
+	npm run build
 
 version:
 	@echo -n $(VERSION)
@@ -26,4 +29,4 @@ docker-promote: docker-pull
 docker-delete:
 	curl -X DELETE -u "$(DOCKER_USER):$(DOCKER_CLOUD_TOKEN)" "https://cloud.docker.com/v2/repositories/$(DOCKER_USER)/$(APP_NAME)/tags/$(VERSION)/"
 
-.PHONY: docker version docker-login docker-build docker-push docker-pull docker-promote docker-delete
+.PHONY: docker js version docker-login docker-build docker-push docker-pull docker-promote docker-delete

@@ -1,8 +1,44 @@
-const opentracing = require('express-opentracing');
-const jaeger = require('jaeger-client');
+import middleware from'express-opentracing';
+import initTracer from 'jaeger-client';
 
-module.exports = function(app, options, excludePaths = []) {
-  const tracer = jaeger.initTracer({
+/**
+ * Args definition for tracing
+ * @param  {Object} yargs Yargs object
+ * @return {Object}       Yargs object
+ */
+function args(yargs) {
+  return yargs
+    .options('tracingName', {
+      required: false,
+      type: 'String',
+      describe: 'Opentracing Service Name',
+    })
+    .options('jaegerHost', {
+      required: false,
+      type: 'String',
+      describe: 'Jaeger Remote Host',
+      default: 'jaeger',
+    })
+    .options('jaegerPort', {
+      required: false,
+      type: 'Number',
+      describe: 'Jaeger Remote Port',
+      default: 6832,
+    });
+}
+
+/**
+ * Init opentracing with Jaeger client
+ * @param  {Object} app          Express App
+ * @param  {Object} options      Yargs options
+ * @param  {Array}  excludePaths Exluded paths in tracing
+ */
+function init(app, options, excludePaths = []) {
+  if (!options.tracingName) {
+    return;
+  }
+
+  const tracer = initTracer({
     serviceName: options.tracingName,
     sampler: {
       type: 'const',
@@ -10,7 +46,8 @@ module.exports = function(app, options, excludePaths = []) {
     },
     reporter: {
       logSpans: false,
-      agentHost: 'jaeger',
+      agentHost: options.jaegerHost,
+      agentPort: options.jaegerPort,
     },
   }, {
     logger: {
@@ -24,6 +61,11 @@ module.exports = function(app, options, excludePaths = []) {
       return next();
     }
 
-    opentracing.default({ tracer: tracer })(req, res, next);
+    middleware({ tracer: tracer })(req, res, next);
   });
+}
+
+export default {
+  init,
+  args,
 }
