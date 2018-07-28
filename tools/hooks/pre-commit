@@ -22,7 +22,7 @@ function checkInstall() {
   npmInstall="true"
 
   if command -v npm > /dev/null 2>&1; then
-    npm --silent install
+    npm --silent install --ignore-scripts --no-audit
 
     pass=$?
   else
