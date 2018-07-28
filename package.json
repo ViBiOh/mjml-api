@@ -9,7 +9,7 @@
     "lint": "./node_modules/.bin/eslint --fix src/",
     "prebuild": "npm run format && npm run lint",
     "build": "./node_modules/.bin/babel src --out-dir dist",
-    "start": "./node_modules/.bin/babel-node src/index.js"
+    "start": "./node_modules/.bin/babel-node src/index.js --rollbarToken ${ROLLBAR_TOKEN} --rollbarEnv dev"
   },
   "keywords": [
     "mjml",
@@ -24,6 +24,7 @@
     "express-opentracing": "0.1.1",
     "jaeger-client": "3.11.0",
     "mjml": "4.1.0",
+    "rollbar": "2.4.4",
     "yargs": "12.0.1"
   },
   "devDependencies": {

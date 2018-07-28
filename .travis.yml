@@ -22,11 +22,12 @@ jobs:
 
       sed \
         -e "s|\${HTTP_PASSWORD}|${HTTP_PASSWORD}|g" \
+        -e "s|\${ROLLBAR_TOKEN}|${ROLLBAR_TOKEN}|g" \
         docker-compose.yml > docker-compose-env.yml
     deploy:
     - provider: script
       skip_cleanup: true
-      script: "curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/deploy/mjml/ --data-binary @docker-compose-env.yml"
+      script: 'curl -H "Authorization: GitHub ${GITHUB_OAUTH_TOKEN}" -X POST "https://dashboard-api.vibioh.fr/deploy/mjml/?rollbar_token=${ROLLBAR_TOKEN}&user=`make author`&revision=`make version`&environment=prod" --data-binary @docker-compose-env.yml"
 
 stages:
   - Build
