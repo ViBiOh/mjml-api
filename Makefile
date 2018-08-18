@@ -32,7 +32,4 @@ docker-pull:
 docker-promote: docker-pull
 	docker tag $(DOCKER_USER)/$(APP_NAME):$(VERSION) $(DOCKER_USER)/$(APP_NAME):latest
 
-docker-delete:
-	curl -X DELETE -u "$(DOCKER_USER):$(DOCKER_CLOUD_TOKEN)" "https://cloud.docker.com/v2/repositories/$(DOCKER_USER)/$(APP_NAME)/tags/$(VERSION)/"
-
 .PHONY: docker js version author docker-login docker-build docker-push docker-pull docker-promote docker-delete

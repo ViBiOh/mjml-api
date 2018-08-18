@@ -8,17 +8,12 @@ jobs:
     - docker
     node_js: 10
     script: make
-    after_success: |
-      if [ "${TRAVIS_BRANCH}" != "master" ]; then
-        make docker-delete
-      fi
 
   - stage: Deploy
 
     script: |
       make docker-promote
       VERSION=latest make docker-push
-      make docker-delete
 
       sed \
         -e "s|\${HTTP_PASSWORD}|${HTTP_PASSWORD}|g" \
