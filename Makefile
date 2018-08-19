@@ -1,15 +1,18 @@
+APP_NAME := mjml-api
 VERSION ?= $(shell git log --pretty=format:'%h' -n 1)
 AUTHOR ?= $(shell git log --pretty=format:'%an' -n 1)
-APP_NAME := mjml-api
 
-default: js docker
+docker:
+	docker build -t vibioh/$(APP_NAME):$(VERSION) .
 
-docker: docker-build docker-push
-
-js:
+$(APP_NAME):
+	npm ci
 	npm run build
 	rm -rf node_modules/
 	npm i --production
+
+name:
+	@echo -n $(APP_NAME)
 
 version:
 	@echo -n $(VERSION)
@@ -17,19 +20,4 @@ version:
 author:
 	@python -c 'import sys; import urllib; sys.stdout.write(urllib.quote_plus(sys.argv[1]))' "$(AUTHOR)"
 
-docker-login:
-	echo $(DOCKER_PASS) | docker login -u $(DOCKER_USER) --password-stdin
-
-docker-build:
-	docker build -t $(DOCKER_USER)/$(APP_NAME):$(VERSION) .
-
-docker-push: docker-login
-	docker push $(DOCKER_USER)/$(APP_NAME):$(VERSION)
-
-docker-pull:
-	docker pull $(DOCKER_USER)/$(APP_NAME):$(VERSION)
-
-docker-promote: docker-pull
-	docker tag $(DOCKER_USER)/$(APP_NAME):$(VERSION) $(DOCKER_USER)/$(APP_NAME):latest
-
-.PHONY: docker js version author docker-login docker-build docker-push docker-pull docker-promote docker-delete
+.PHONY: docker $(APP_NAME) name version author
