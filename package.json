@@ -5,11 +5,11 @@
   "repository": "https://github.com/ViBiOh/mjml-api",
   "main": "dist/index.js",
   "scripts": {
-    "format": "./node_modules/.bin/prettier --write src/*.js",
-    "lint": "./node_modules/.bin/eslint --fix src/",
+    "format": "prettier --write src/*.js",
+    "lint": "eslint --fix src/",
     "prebuild": "npm run format && npm run lint",
-    "build": "./node_modules/.bin/babel src --out-dir dist",
-    "start": "./node_modules/.bin/babel-node src/index.js --rollbarToken ${ROLLBAR_TOKEN} --rollbarEnv dev"
+    "build": "babel src --out-dir dist",
+    "start": "babel-node src/index.js --rollbarToken ${ROLLBAR_TOKEN} --rollbarEnv dev"
   },
   "keywords": [
     "mjml",
