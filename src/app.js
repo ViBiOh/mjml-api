@@ -1,5 +1,6 @@
+import mjml2html from 'mjml';
+
 const bodyParser = require('body-parser');
-const mjml2html = require('mjml');
 
 /**
  * Init app

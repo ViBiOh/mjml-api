@@ -4,19 +4,21 @@
 
 Convert MJML to HTML.
 
-## Input
+## Usage
 
 ```bash
-{
-  "mjml": "<mjml>...</mjml>"
-}
-```
+curl -H 'Content-type: application/json' http://localhost:3000 -d '{"mjml":"<mjml></mjml>"}'
 
-## Output
-
-```bash
 {
-  "html": "<html>...</html>",
-  "errors": []
+  "html":"
+    <!doctype html>
+    <html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
+      <head>
+      </head>
+      <body>
+      </body>
+    </html>
+  ",
+  "errors":[]
 }
 ```
