@@ -23,30 +23,21 @@
     "express": "4.16.4",
     "express-opentracing": "0.1.1",
     "jaeger-client": "3.13.0",
-    "mjml": "4.2.1",
-    "prom-client": "11.2.0",
-    "rollbar": "2.5.1",
+    "mjml": "4.3.0",
     "yargs": "12.0.5"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-preset-env": "1.7.0",
-    "eslint": "5.10.0",
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.2.2",
+    "@babel/node": "7.2.2",
+    "@babel/preset-env": "7.2.3",
+    "@babel/register": "7.0.0",
+    "babel-eslint": "10.0.1",
+    "eslint": "5.12.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-prettier": "3.3.0",
     "eslint-plugin-import": "2.14.0",
     "prettier": "1.15.3"
-  },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "airbnb-base",
-      "prettier"
-    ]
   },
   "prettier": {
     "singleQuote": true,
