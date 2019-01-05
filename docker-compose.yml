@@ -22,8 +22,6 @@ services:
       driver: json-file
       options:
         max-size: '10m'
-    group_add:
-    - '${DOCKER_GROUP}'
     restart: on-failure:5
     read_only: true
     cpu_shares: 128
