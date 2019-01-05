@@ -9,7 +9,7 @@
     "lint": "eslint --fix src/",
     "prebuild": "npm run format && npm run lint",
     "build": "babel src --out-dir dist",
-    "start": "babel-node src/index.js --rollbarToken ${ROLLBAR_TOKEN} --rollbarEnv dev"
+    "start": "babel-node src/index.js"
   },
   "keywords": [
     "mjml",

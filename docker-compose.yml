@@ -6,10 +6,6 @@ services:
     command:
     - --tracingName
     - mjml
-    - --rollbarToken
-    - ${ROLLBAR_TOKEN}
-    - --rollbarEnv
-    - prod
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: mjml.vibioh.fr'
