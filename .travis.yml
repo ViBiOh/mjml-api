@@ -5,10 +5,10 @@ jobs:
     sudo: required
     services:
     - docker
-    script: docker build -t vibioh/`make name`:`make version` .
+    script: docker build -t vibioh/$(make name):$(make version) .
     after_success: |
       echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin && \
-      docker push vibioh/mjml-api:`make version`
+      docker push vibioh/mjml-api:$(make version)
 
   - stage: Publish
 
@@ -17,8 +17,8 @@ jobs:
     - docker
     script: |
       echo ${DOCKER_PASS} | docker login -u vibioh --password-stdin
-      docker pull vibioh/mjml-api:`make version`
-      docker tag vibioh/mjml-api:`make version` vibioh/mjml-api:latest
+      docker pull vibioh/mjml-api:$(make version)
+      docker tag vibioh/mjml-api:$(make version) vibioh/mjml-api:latest
       docker push vibioh/mjml-api:latest
 
   - stage: Deploy

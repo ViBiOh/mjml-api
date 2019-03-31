@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-diffInitial=`git diff --name-only --diff-filter=ACMR`
+diffInitial=$(git diff --name-only --diff-filter=ACMR)
 
 BLUE='\033[0;34m'
 RED='\033[0;31m'
 RESET='\033[0m'
 
-package=`git diff --cached --name-only --diff-filter=ACMR | grep -E "package.json$"`
-js=`git diff --cached --name-only --diff-filter=ACMR | grep -E "js$"`
+package=$(git diff --cached --name-only --diff-filter=ACMR | grep -E "package.json$")
+js=$(git diff --cached --name-only --diff-filter=ACMR | grep -E "js$")
 
 pass=0
 
@@ -57,7 +57,7 @@ if [ ! "${pass}" == "0" ]; then
     exit 1
 fi
 
-diffFinal=`git diff --name-only --diff-filter=ACMR`
+diffFinal=$(git diff --name-only --diff-filter=ACMR)
 
 if [ ! "$diffInitial" == "$diffFinal" ]; then
   echo -e "${RED}Pre-commit has changes files${RESET}"

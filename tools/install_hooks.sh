@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-cd `dirname ${0}`
+set -o errexit
+set -o nounset
+set -o pipefail
 
-WORKING_DIR=`pwd`
-HOOKS_DIR="hooks"
-GIT_ROOT=`git rev-parse --show-cdup`
+readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-for file in `ls ${HOOKS_DIR}`; do
-  fullpath="${WORKING_DIR}/${GIT_ROOT%%/}/.git/hooks/${file}"
-  ln -f -s "${WORKING_DIR}/${HOOKS_DIR}/${file}" "${fullpath}"
-  echo "${file} hook installed"
-done
+main() {
+  pushd "${SCRIPT_DIR}/hooks"
+
+  for file in *; do
+    ln -s -f "$(pwd)/${file}" "${SCRIPT_DIR}/../.git/hooks/${file}"
+    echo "${file} hook installed"
+  done
+
+  popd
+}
+
+main
