@@ -3,7 +3,9 @@ SHELL = /bin/sh
 APP_NAME ?= mjml-api
 VERSION ?= $(shell git rev-parse --short HEAD)
 AUTHOR ?= $(shell git log --pretty=format:'%an' -n 1)
+
 PACKAGES ?= ./...
+APP_PACKAGES = $(shell go list -e $(PACKAGES) | grep -v vendor | grep -v node_modules)
 
 .PHONY: help
 help: Makefile
