@@ -1,6 +1,6 @@
 SHELL = /bin/sh
 
-APP_NAME ?= mjml-api
+APP_NAME ?= mjml
 VERSION ?= $(shell git rev-parse --short HEAD)
 AUTHOR ?= $(shell git log --pretty=format:'%an' -n 1)
 

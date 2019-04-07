@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   api:
-    image: vibioh/mjml-api
+    image: vibioh/mjml
     command:
     - --tracingName
     - mjml
