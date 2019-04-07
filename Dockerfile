@@ -1,6 +1,6 @@
 FROM node:11 as builder
 
-ENV APP_NAME mjml-api
+ENV APP_NAME mjml
 ENV WORKDIR /usr/src/app
 
 WORKDIR ${WORKDIR}
