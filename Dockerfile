@@ -1,15 +1,9 @@
 FROM node:11 as builder
 
-ENV APP_NAME mjml
-ENV WORKDIR /usr/src/app
+WORKDIR /usr/src/app
+COPY . .
 
-WORKDIR ${WORKDIR}
-COPY ./ ${WORKDIR}/
-
-RUN make ${APP_NAME} \
- && mkdir -p /app \
- && cp -r dist/ /app/ \
- && cp -r node_modules/ /app/
+RUN make mjml
 
 FROM node:alpine
 
@@ -19,7 +13,7 @@ EXPOSE 3000
 ENV NODE_ENV production
 ENTRYPOINT [ "/usr/local/bin/node", "index.js" ]
 
-COPY --from=builder /app/dist /home/node/app/
-COPY --from=builder /app/node_modules /home/node/app/node_modules/
+COPY --from=builder /usr/src/app/dist /home/node/app/
+COPY --from=builder /usr/src/app/node_modules /home/node/app/node_modules/
 
 USER node
