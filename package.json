@@ -20,11 +20,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.19.0",
-    "express": "4.16.4",
+    "express": "4.17.0",
     "express-opentracing": "0.1.1",
     "jaeger-client": "3.15.0",
     "mjml": "4.4.0-beta.1",
-    "yargs": "13.2.2"
+    "yargs": "13.2.4"
   },
   "devDependencies": {
     "@babel/cli": "7.4.4",
@@ -35,9 +35,9 @@
     "babel-eslint": "10.0.1",
     "eslint": "5.16.0",
     "eslint-config-airbnb-base": "13.1.0",
-    "eslint-config-prettier": "4.2.0",
+    "eslint-config-prettier": "4.3.0",
     "eslint-plugin-import": "2.17.2",
-    "prettier": "1.17.0"
+    "prettier": "1.17.1"
   },
   "prettier": {
     "singleQuote": true,
