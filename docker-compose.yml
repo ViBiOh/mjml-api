@@ -3,9 +3,6 @@ version: '2.1'
 services:
   api:
     image: vibioh/mjml
-    command:
-    - --tracingName
-    - mjml
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: mjml.vibioh.fr'
