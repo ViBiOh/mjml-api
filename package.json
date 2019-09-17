@@ -23,7 +23,7 @@
     "express": "4.17.1",
     "express-opentracing": "0.1.1",
     "jaeger-client": "3.16.0",
-    "mjml": "4.4.1",
+    "mjml": "4.5.0",
     "yargs": "14.0.0"
   },
   "devDependencies": {
