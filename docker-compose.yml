@@ -4,15 +4,19 @@ services:
   api:
     image: vibioh/mjml
     labels:
-      traefik.frontend.passHostHeader: 'true'
-      traefik.frontend.rule: 'Host: mjml.vibioh.fr'
-      traefik.protocol: 'http'
-      traefik.port: '3000'
-      traefik.frontend.auth.basic.users: ${HTTP_PASSWORD}
-      traefik.frontend.rateLimit.extractorFunc: 'client.ip'
-      traefik.frontend.rateLimit.rateSet.first.period: '60s'
-      traefik.frontend.rateLimit.rateSet.first.average: '100'
-      traefik.frontend.rateLimit.rateSet.first.burst: '200'
+      traefik.http.routers.mjml-http.rule: Host(`mjml.vibioh.fr`)
+      traefik.http.routers.mjml-http.entrypoints: http
+      traefik.http.routers.mjml-http.middlewares: redirect@file
+      traefik.http.routers.mjml-https.rule: Host(`mjml.vibioh.fr`)
+      traefik.http.routers.mjml-https.entrypoints: https
+      traefik.http.routers.mjml-https.middlewares: compress@file, mjml-auth
+      traefik.http.routers.mjml-https.tls: true
+      traefik.http.routers.mjml-https.tls.certResolver: default
+      traefik.http.services.mjml-service.loadbalancer.passhostheader: true
+      traefik.http.services.mjml-service.loadbalancer.server.port: '1080'
+      traefik.http.middlewares.mjml-rate-limit.ratelimit.average: '10'
+      traefik.http.middlewares.mjml-rate-limit.ratelimit.burst: '50'
+      traefik.http.middlewares.mjml-auth.basicAuth.users: '${HTTP_PASSWORD}'
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
     restart: on-failure:5
