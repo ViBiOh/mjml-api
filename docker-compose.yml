@@ -9,13 +9,11 @@ services:
       traefik.http.routers.mjml-http.middlewares: redirect@file
       traefik.http.routers.mjml-https.rule: Host(`mjml.vibioh.fr`)
       traefik.http.routers.mjml-https.entrypoints: https
-      traefik.http.routers.mjml-https.middlewares: compress@file, mjml-auth
+      traefik.http.routers.mjml-https.middlewares: compress@file, web-limit@file, mjml-auth
       traefik.http.routers.mjml-https.tls: true
       traefik.http.routers.mjml-https.tls.certResolver: default
       traefik.http.services.mjml-service.loadbalancer.passhostheader: true
       traefik.http.services.mjml-service.loadbalancer.server.port: '1080'
-      traefik.http.middlewares.mjml-rate-limit.ratelimit.average: '10'
-      traefik.http.middlewares.mjml-rate-limit.ratelimit.burst: '50'
       traefik.http.middlewares.mjml-auth.basicAuth.users: '${HTTP_PASSWORD}'
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
