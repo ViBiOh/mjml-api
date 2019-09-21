@@ -12,7 +12,6 @@ services:
       traefik.http.routers.mjml-https.middlewares: compress@file, web-limit@file, mjml-auth
       traefik.http.routers.mjml-https.tls: true
       traefik.http.routers.mjml-https.tls.certresolver: default
-      traefik.http.services.mjml-service.loadbalancer.passhostheader: true
       traefik.http.services.mjml-service.loadbalancer.server.port: '1080'
       traefik.http.middlewares.mjml-auth.basicauth.removeheader: true
       traefik.http.middlewares.mjml-auth.basicauth.users: '${HTTP_PASSWORD}'
