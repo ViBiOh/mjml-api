@@ -1,4 +1,4 @@
-version: '2.1'
+version: "2.1"
 
 services:
   api:
@@ -12,9 +12,9 @@ services:
       traefik.http.routers.mjml-https.middlewares: compress@file, web-limit@file, mjml-auth
       traefik.http.routers.mjml-https.tls: true
       traefik.http.routers.mjml-https.tls.certresolver: default
-      traefik.http.services.mjml-service.loadbalancer.server.port: '3000'
+      traefik.http.services.mjml-service.loadbalancer.server.port: "3000"
       traefik.http.middlewares.mjml-auth.basicauth.removeheader: true
-      traefik.http.middlewares.mjml-auth.basicauth.users: '${HTTP_PASSWORD}'
+      traefik.http.middlewares.mjml-auth.basicauth.users: "${HTTP_PASSWORD}"
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
     restart: on-failure:5
