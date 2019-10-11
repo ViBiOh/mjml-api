@@ -1,6 +1,7 @@
 # mjml-api
 
 [![Build Status](https://travis-ci.org/ViBiOh/mjml-api.svg?branch=master)](https://travis-ci.org/ViBiOh/mjml-api)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ViBiOh/mjml-api)](https://dependabot.com)
 
 Convert MJML to HTML.
 
