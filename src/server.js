@@ -1,5 +1,5 @@
 /**
- * Args definition for tracing
+ * Args definition
  * @param  {Object} yargs Yargs object
  * @return {Object}       Yargs object
  */
