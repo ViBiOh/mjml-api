@@ -23,7 +23,7 @@
     "express": "4.17.1",
     "jaeger-client": "3.17.1",
     "mjml": "4.5.1",
-    "yargs": "14.2.0"
+    "yargs": "15.0.1"
   },
   "devDependencies": {
     "@babel/cli": "7.7.0",
