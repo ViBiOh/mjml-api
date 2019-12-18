@@ -1,13 +1,12 @@
 import mjml2html from 'mjml';
-
-const bodyParser = require('body-parser');
+import { json } from 'body-parser';
 
 /**
  * Init app
  * @param  {Object} app Express App
  */
 function init(app) {
-  app.use(bodyParser.json());
+  app.use(json());
 
   app.get('/health', (req, res) => {
     res.sendStatus(200);
