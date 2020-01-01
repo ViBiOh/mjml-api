@@ -4,7 +4,7 @@ version: "2.1"
 
 services:
   api:
-    image: vibioh/mjml
+    image: ${DOCKER_USER}/mjml
     labels:
       traefik.http.routers.mjml-http.rule: Host(`mjml.vibioh.fr`)
       traefik.http.routers.mjml-http.entrypoints: http
