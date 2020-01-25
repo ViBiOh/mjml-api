@@ -9,7 +9,7 @@ function init(app) {
   app.use(json());
 
   app.get('/health', (req, res) => {
-    res.sendStatus(200);
+    res.sendStatus(204);
   });
 
   app.post('/', (req, res) => {

@@ -10,7 +10,7 @@ jobs:
         - docker
       script: docker build --build-arg CODECOV_TOKEN --build-arg "APP_VERSION=$(make version)" -t "${DOCKER_USER}/$(make name):$(make version)" .
       after_success:
-        - echo ${DOCKER_PASS} | docker login -u "${DOCKER_USER}" --password-stdin
+        - echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
         - docker push "${DOCKER_USER}/$(make name):$(make version)"
 
     - stage: Publish

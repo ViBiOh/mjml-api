@@ -3,7 +3,7 @@ FROM node:13 as builder
 WORKDIR /usr/src/app
 COPY . .
 
-RUN make mjml \
+RUN make \
  && git diff -- *.go \
  && git diff --quiet -- *.go
 
