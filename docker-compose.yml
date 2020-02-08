@@ -12,7 +12,7 @@ services:
       traefik.http.routers.mjml-https.rule: Host(`mjml.vibioh.fr`)
       traefik.http.routers.mjml-https.entrypoints: https
       traefik.http.routers.mjml-https.middlewares: compress@file, web-limit@file, mjml-auth
-      traefik.http.routers.mjml-https.tls: true
+      traefik.http.routers.mjml-https.tls: "true"
       traefik.http.routers.mjml-https.tls.certresolver: default
       traefik.http.services.mjml-service.loadbalancer.server.port: "3000"
       traefik.http.middlewares.mjml-auth.basicauth.removeheader: true
