@@ -4,13 +4,23 @@ jobs:
   include:
     - stage: Build
 
-      language: minimal
+      language: node_js
+      node_js: 13
       services:
         - docker
-      script: docker build --build-arg CODECOV_TOKEN --build-arg "APP_VERSION=$(make version)" -t "${DOCKER_USER}/$(make name):$(make version)" .
-      after_success:
+      before_install:
+        - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        - sudo apt-get update
+        - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+        - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
+        - sudo systemctl restart docker
+      script:
+        - make
+        - git diff -- *.go && git diff --quiet -- *.go
+        - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "release"
         - echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
-        - docker push "${DOCKER_USER}/$(make name):$(make version)"
+        - DOCKER_IMAGE="${DOCKER_USER}/$(make name)" IMAGE_VERSION="$(make version)" ./scripts/release docker
 
     - stage: Publish
 
@@ -19,19 +29,9 @@ jobs:
         - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "docker_promote"
         - scripts/docker_promote "${DOCKER_USER}/$(make name)" "$(make version)"
 
-    - stage: Deploy
-
-      language: minimal
-      script:
-        - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "deploy" "env_replace"
-        - scripts/env_replace docker-compose.yml DOCKER_USER HTTP_PASSWORD | sed "s|\\\$|\$\$|g" > docker-compose-env.yml
-        - scripts/deploy "$(make name)" "@docker-compose-env.yml"
-
 stages:
   - Build
   - name: Publish
-    if: branch = master && type = push
-  - name: Deploy
     if: branch = master && type = push
 
 notifications:
