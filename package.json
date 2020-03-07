@@ -6,9 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "init": "curl -q -sSL --max-time 10 'https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap' | bash -s 'git_hooks'",
-    "format": "prettier --write src/*.js",
-    "style": "eslint --fix src/",
-    "prebuild": "npm run format && npm run style",
+    "format": "prettier --write \"src/**/*.js\"",
+    "style": "eslint --fix \"src/**/*.js\"",
     "build": "babel src --out-dir dist",
     "start": "babel-node src/index.js"
   },

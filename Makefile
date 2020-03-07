@@ -16,11 +16,7 @@ help: Makefile
 
 ## app: Build app with dependencies download
 .PHONY: app
-app:
-	npm ci
-	npm run build
-	rm -rf node_modules/
-	npm i --production
+app: init format style build
 
 ## name: Output name of app
 .PHONY: name
@@ -36,3 +32,26 @@ version:
 .PHONY: init
 init:
 	@curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "git_hooks"
+	npm ci
+
+## format: Format code
+.PHONY: format
+format:
+	npm run format
+
+## style: Check code style
+.PHONY: style
+style:
+	npm run style
+
+## build: Build artefact
+.PHONY: build
+build:
+	npm run build
+	rm -rf node_modules/
+	npm i --production
+
+## run: Run locally
+.PHONY: run
+run:
+	npm start
