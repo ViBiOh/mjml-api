@@ -12,46 +12,46 @@ APP_NAME = mjml
 ## help: Display list of commands
 .PHONY: help
 help: Makefile
-	@sed -n 's|^##||p' $< | column -t -s ':' | sed -e 's|^| |'
+	@sed -n 's|^##||p' $< | column -t -s ':' | sort
 
-## app: Build app with dependencies download
+## app: Build whole app
 .PHONY: app
 app: init format style build
 
 ## name: Output name of app
 .PHONY: name
 name:
-	@printf "%s" "$(APP_NAME)"
+	@printf "$(APP_NAME)"
 
 ## version: Output sha1 of last commit
 .PHONY: version
 version:
-	@printf "%s" "$(shell git rev-parse --short HEAD)"
+	@printf "$(shell git rev-parse --short HEAD)"
 
-## init: Download dependencies
+## init: Bootstrap your application. e.g. fetch some data files, make some API calls, request user input etc...
 .PHONY: init
 init:
 	@curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "git_hooks"
 	npm ci
 
-## format: Format code
+## format: Format code. e.g Prettier (js), format (golang)
 .PHONY: format
 format:
 	npm run format
 
-## style: Check code style
+## style: Check lint, code styling rules. e.g. pylint, phpcs, eslint, style (java) etc ...
 .PHONY: style
 style:
 	npm run style
 
-## build: Build artefact
+## build: Build the application.
 .PHONY: build
 build:
 	npm run build
 	rm -rf node_modules/
 	npm i --production
 
-## run: Run locally
+## run: Locally run the application, e.g. node index.js, python -m myapp, go run myapp etc ...
 .PHONY: run
 run:
 	npm start
