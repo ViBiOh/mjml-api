@@ -6,6 +6,14 @@
 
 Convert MJML to HTML.
 
+## Getting Started
+
+A Docker image is available for `amd64`, `arm` and `arm64` platforms on Docker Hub: [vibioh/mjml](https://hub.docker.com/r/vibioh/mjml/tags).
+
+You can configure app by passing CLI args or environment variables (cf. [Usage](#usage) section). CLI override environment variables.
+
+You'll find a Kubernetes exemple (without secrets) in the [`infra/`](infra/) folder.
+
 ## Usage
 
 ```bash
