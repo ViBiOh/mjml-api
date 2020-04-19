@@ -11,10 +11,6 @@ spec:
     metadata:
       labels:
         name: mjml
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/scheme: http
-        prometheus.io/port: "1080"
     spec:
       containers:
         - name: funds
