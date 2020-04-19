@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mjml
+spec:
+  selector:
+    matchLabels:
+      name: mjml
+  template:
+    metadata:
+      labels:
+        name: mjml
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/scheme: http
+        prometheus.io/port: "1080"
+    spec:
+      containers:
+        - name: funds
+          image: vibioh/mjml
+          ports:
+            - name: http
+              containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          resources:
+            requests:
+              memory: 24M
+            limits:
+              memory: 64M
