@@ -5,7 +5,7 @@ jobs:
     - stage: Build
 
       language: node_js
-      node_js: 13
+      node_js: 14
       services:
         - docker
       before_install:
