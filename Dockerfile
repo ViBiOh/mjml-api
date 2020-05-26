@@ -12,4 +12,4 @@ ENV VERSION=${VERSION}
 COPY dist /home/node/app/
 COPY node_modules /home/node/app/node_modules/
 
-USER node
+USER 1000
