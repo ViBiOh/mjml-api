@@ -11,7 +11,11 @@
     "build": "babel src --out-dir dist",
     "start": "babel-node src/index.js"
   },
-  "keywords": ["mjml", "api", "conversion"],
+  "keywords": [
+    "mjml",
+    "api",
+    "conversion"
+  ],
   "author": "ViBiOh",
   "license": "ISC",
   "dependencies": {
