@@ -5,7 +5,7 @@
   "repository": "https://github.com/ViBiOh/mjml-api",
   "main": "dist/index.js",
   "scripts": {
-    "init": "curl -q -sSL --max-time 10 'https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap' | bash -s 'git_hooks'",
+    "init": "curl -q -sSL --max-time 30 'https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap' | bash -s 'git_hooks'",
     "format": "prettier --write \"src/**/*.js\"",
     "style": "eslint --fix \"src/**/*.js\"",
     "build": "babel src --out-dir dist",
