@@ -1,0 +1,9 @@
+---
+nameOverride: mjml
+
+podAnnotations:
+
+image:
+  repository: vibioh/mjml
+
+port: 3000
