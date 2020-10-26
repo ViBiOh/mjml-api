@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:15-alpine
 
 WORKDIR /home/node/app
 EXPOSE 3000

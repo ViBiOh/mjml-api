@@ -6,10 +6,10 @@
   "main": "dist/index.js",
   "scripts": {
     "init": "curl -q -sSL --max-time 30 'https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap' | bash -s 'git_hooks'",
-    "format": "prettier --write \"src/**/*.js\"",
+    "format": "./node_modules/prettier/bin-prettier.js --write \"src/**/*.js\"",
     "style": "eslint --fix \"src/**/*.js\"",
-    "build": "babel src --out-dir dist",
-    "start": "babel-node src/index.js"
+    "build": "./node_modules/@babel/cli/bin/babel.js src --out-dir dist",
+    "start": "./node_modules/@babel/node/bin/babel-node.js src/index.js"
   },
   "keywords": [
     "mjml",
@@ -22,7 +22,6 @@
     "body-parser": "1.19.0",
     "express": "4.17.1",
     "express-prom-bundle": "6.2.0",
-    "jaeger-client": "3.18.1",
     "mjml": "4.7.1",
     "prom-client": "12.0.0",
     "yargs": "16.1.0"
