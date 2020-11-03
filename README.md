@@ -1,6 +1,6 @@
 # mjml-api
 
-[![Build Status](https://travis-ci.com/ViBiOh/mjml-api.svg?branch=master)](https://travis-ci.com/ViBiOh/mjml-api)
+[![Build](https://github.com/ViBiOh/mjml-api/workflows/Build/badge.svg)](https://github.com/ViBiOh/mjml-api/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ViBiOh_mjml-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=ViBiOh_mjml-api)
 
 Convert MJML to HTML.
