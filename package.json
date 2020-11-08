@@ -7,7 +7,7 @@
   "scripts": {
     "init": "curl -q -sSL --max-time 30 'https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap' | bash -s 'git_hooks'",
     "format": "./node_modules/prettier/bin-prettier.js --write \"src/**/*.js\"",
-    "style": "eslint --fix \"src/**/*.js\"",
+    "style": "./node_modules/eslint/bin/eslint.js --fix \"src/**/*.js\"",
     "build": "./node_modules/@babel/cli/bin/babel.js src --out-dir dist",
     "start": "./node_modules/@babel/node/bin/babel-node.js src/index.js"
   },
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/cli": "7.12.1",
     "@babel/core": "7.12.3",
-    "@babel/node": "7.12.1",
+    "@babel/node": "7.12.6",
     "@babel/preset-env": "7.12.1",
     "@babel/register": "7.12.1",
     "babel-eslint": "10.1.0",
