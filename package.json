@@ -5,17 +5,13 @@
   "repository": "https://github.com/ViBiOh/mjml-api",
   "main": "dist/index.js",
   "scripts": {
-    "init": "curl -q -sSL --max-time 30 'https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap' | bash -s 'git_hooks'",
+    "init": "curl --disable --silent --show-error --location --max-time 30 'https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap' | bash -s 'git_hooks'",
     "format": "./node_modules/prettier/bin-prettier.js --write \"src/**/*.js\"",
     "style": "./node_modules/eslint/bin/eslint.js --fix \"src/**/*.js\"",
     "build": "./node_modules/@babel/cli/bin/babel.js src --out-dir dist",
     "start": "./node_modules/@babel/node/bin/babel-node.js src/index.js"
   },
-  "keywords": [
-    "mjml",
-    "api",
-    "conversion"
-  ],
+  "keywords": ["mjml", "api", "conversion"],
   "author": "ViBiOh",
   "license": "ISC",
   "dependencies": {
