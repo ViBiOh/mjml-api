@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: "0.0.30"
+      version: '0.0.30'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -25,3 +25,11 @@ spec:
       repository: vibioh/mjml
 
     port: 3000
+
+    resources:
+      limits:
+        cpu: 200m
+        memory: 128Mi
+      requests:
+        cpu: 200m
+        memory: 128Mi
