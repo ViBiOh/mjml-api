@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -15,17 +14,12 @@ spec:
         name: vibioh
         namespace: flux-system
       interval: 120m
-
   values:
     nameOverride: mjml
-
     podAnnotations:
-
     image:
-      repository: vibioh/mjml # {"$imagepolicy": "default:mjml-api"}
-
+      repository: vibioh/mjml:latest # {"$imagepolicy": "default:mjml-api"}
     port: 3000
-
     resources:
       limits:
         cpu: 200m
