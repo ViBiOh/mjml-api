@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: '0.0.30'
+      version: '0.0.32'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -22,7 +22,7 @@ spec:
     podAnnotations:
 
     image:
-      repository: vibioh/mjml
+      repository: vibioh/mjml # {"$imagepolicy": "default:mjml-api"}
 
     port: 3000
 
