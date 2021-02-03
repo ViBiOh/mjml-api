@@ -11,7 +11,11 @@
     "build": "./node_modules/@babel/cli/bin/babel.js src --out-dir dist",
     "start": "./node_modules/@babel/node/bin/babel-node.js src/index.js"
   },
-  "keywords": ["mjml", "api", "conversion"],
+  "keywords": [
+    "mjml",
+    "api",
+    "conversion"
+  ],
   "author": "ViBiOh",
   "license": "ISC",
   "dependencies": {
@@ -23,7 +27,7 @@
     "yargs": "16.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.12.10",
+    "@babel/cli": "7.12.13",
     "@babel/core": "7.12.10",
     "@babel/node": "7.12.10",
     "@babel/preset-env": "7.12.11",
