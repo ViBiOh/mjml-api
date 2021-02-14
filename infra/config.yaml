@@ -18,7 +18,7 @@ spec:
     nameOverride: mjml
     podAnnotations:
     image:
-      repository: vibioh/mjml:202102131831 # {"$imagepolicy": "default:mjml-api"}
+      repository: vibioh/mjml:202102140937 # {"$imagepolicy": "default:mjml-api"}
     port: 3000
     resources:
       limits:
