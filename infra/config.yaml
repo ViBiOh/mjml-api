@@ -25,7 +25,7 @@ spec:
     nameOverride: mjml
     podAnnotations:
     image:
-      repository: vibioh/mjml:202102211156 # {"$imagepolicy": "default:mjml-api"}
+      repository: vibioh/mjml:202102212022 # {"$imagepolicy": "default:mjml-api"}
     port: 3000
     prometheus:
       port: 3000
