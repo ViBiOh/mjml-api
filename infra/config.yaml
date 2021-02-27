@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: '0.0.46'
+      version: "0.0.46"
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -25,7 +25,7 @@ spec:
     nameOverride: mjml
     podAnnotations:
     image:
-      repository: vibioh/mjml:202102212022 # {"$imagepolicy": "default:mjml-api"}
+      repository: vibioh/mjml:202102212022 # {"$imagepolicy": "default:flux-mjml-api"}
     port: 3000
     prometheus:
       port: 3000
