@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: "0.0.62"
+      version: '0.0.62'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -29,6 +29,8 @@ spec:
       tag: "202103262050" # {"$imagepolicy": "default:flux-mjml-api:tag"}
     port: 3000
     prometheus:
+      port: 3000
+    probes:
       port: 3000
     resources:
       limits:
