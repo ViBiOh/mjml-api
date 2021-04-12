@@ -32,6 +32,8 @@ spec:
       port: 3000
     probes:
       port: 3000
+      liveness: /health
+      readiness: /health
     resources:
       limits:
         memory: 128Mi
