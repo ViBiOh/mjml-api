@@ -10,8 +10,7 @@ import app from './app';
  * @return {Object} Yargs options
  */
 function getOptions() {
-  let args = yargs.reset();
-  args = server.args(args);
+  const args = server.args(yargs);
 
   return args.help('help').strict().argv;
 }
