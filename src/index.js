@@ -22,7 +22,7 @@ const options = getOptions();
 const expressApp = express();
 
 if (cluster.isPrimary) {
-  for (let i = 0; i < numCPUs; i++) {
+  for (let i = 0; i < numCPUs; i += 1) {
     cluster.fork();
   }
 
