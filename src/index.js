@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 
+import cluster from 'cluster';
 import express from 'express';
 import yargs from 'yargs';
 import server from './server';
 import app from './app';
+
+const numCPUs = require('os').cpus().length;
 
 /**
  * Get options from yargs.
@@ -18,5 +21,15 @@ function getOptions() {
 const options = getOptions();
 const expressApp = express();
 
-app.init(expressApp);
-server.init(expressApp, options);
+if (cluster.isPrimary) {
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker) => {
+    console.log(`worker ${worker.process.pid} died`);
+  });
+} else {
+  app.init(expressApp);
+  server.init(expressApp, options);
+}
