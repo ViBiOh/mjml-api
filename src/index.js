@@ -6,14 +6,19 @@ import yargs from 'yargs';
 import server from './server';
 import app from './app';
 
-const numCPUs = require('os').cpus().length;
-
 /**
  * Get options from yargs.
  * @return {Object} Yargs options
  */
 function getOptions() {
   const args = server.args(yargs);
+
+  args.options('workerCount', {
+    required: false,
+    type: 'Number',
+    describe: 'Worker count for cluster mode',
+    default: 2,
+  });
 
   return args.help('help').strict().argv;
 }
@@ -22,7 +27,7 @@ const options = getOptions();
 const expressApp = express();
 
 if (cluster.isPrimary) {
-  for (let i = 0; i < numCPUs; i += 1) {
+  for (let i = 0; i < options.workerCount; i += 1) {
     cluster.fork();
   }
 
