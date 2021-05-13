@@ -17,7 +17,7 @@ function getOptions() {
     required: false,
     type: 'Number',
     describe: 'Worker count for cluster mode',
-    default: 2,
+    default: 1,
   });
 
   return args.help('help').strict().argv;
@@ -26,7 +26,7 @@ function getOptions() {
 const options = getOptions();
 const expressApp = express();
 
-if (cluster.isPrimary) {
+if (cluster.isPrimary && options.workerCount > 1) {
   for (let i = 0; i < options.workerCount; i += 1) {
     cluster.fork();
   }
