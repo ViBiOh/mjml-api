@@ -18,9 +18,10 @@ You'll find a Kubernetes exemple in the [`infra/`](infra/) folder, using my [`ap
 ```bash
 node dist/index.js --help
 Options:
-  --version  Show version number                                       [boolean]
-  --port     Listening port                                      [default: 3000]
-  --help     Show help                                                 [boolean]
+  --version      Show version number                                   [boolean]
+  --port         Listening port                                  [default: 3000]
+  --workerCount  Worker count for cluster mode                      [default: 1]
+  --help         Show help                                             [boolean]
 ```
 
 ### HTTP Usage
