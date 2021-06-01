@@ -19,7 +19,6 @@ defaults:
 jobs:
   build:
     name: Javascript
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -56,7 +55,6 @@ jobs:
 
   sonarcloud:
     name: SonarCloud
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
