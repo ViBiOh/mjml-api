@@ -36,4 +36,4 @@ spec:
       limits:
         memory: 128Mi
       requests:
-        memory: 64Mi
+        memory: 96Mi
