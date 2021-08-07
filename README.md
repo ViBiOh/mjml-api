@@ -15,6 +15,10 @@ You'll find a Kubernetes exemple in the [`infra/`](infra/) folder, using my [`ap
 
 ## Usage
 
+The application can be configured by passing CLI args described below or their equivalent as environment variable. CLI values take precedence over environments variables.
+
+Be careful when using the CLI values, if someone list the processes on the system, they will appear in plain-text. Pass secrets by environment variables: it's less easily visible.
+
 ```bash
 node dist/index.js --help
 Options:
