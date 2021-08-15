@@ -23,7 +23,7 @@
     "express": "4.17.1",
     "express-prom-bundle": "6.3.6",
     "mjml": "4.10.2",
-    "prom-client": "13.1.0",
+    "prom-client": "13.2.0",
     "yargs": "17.1.0"
   },
   "devDependencies": {
