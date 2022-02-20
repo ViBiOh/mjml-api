@@ -12,8 +12,11 @@ const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
 const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 
 function ignoreMetaEndpoint(spanName, spanKind, attributes) {
-  const route = attributes[SemanticAttributes.HTTP_ROUTE];
-  return route === '/health' || route === '/version' || route === '/metrics';
+  const route = attributes[SemanticAttributes.HTTP_TARGET];
+  return (
+    spanKind === api.SpanKind.SERVER &&
+    (route === '/health' || route === '/version' || route === '/metrics')
+  );
 }
 
 function filterSampler(filterFn, parent) {
