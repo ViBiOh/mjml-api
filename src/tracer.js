@@ -12,10 +12,7 @@ const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
 const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 
 function ignoreHealthCheck(spanName, spanKind, attributes) {
-  return (
-    spanKind !== api.SpanKind.SERVER ||
-    attributes[SemanticAttributes.HTTP_ROUTE] !== '/health'
-  );
+  return spanKind !== api.SpanKind.SERVER || attributes[SemanticAttributes.HTTP_ROUTE] !== "/health";
 }
 
 function filterSampler(filterFn, parent) {
@@ -28,8 +25,8 @@ function filterSampler(filterFn, parent) {
     },
     toString() {
       return `FilterSampler(${parent.toString()})`;
-    },
-  };
+    }
+  }
 }
 
 const endpoint = process.env.JAEGER_ENDPOINT;
