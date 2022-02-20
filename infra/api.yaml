@@ -28,9 +28,6 @@ spec:
       name: vibioh/mjml
       tag: '202202201238' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     port: 3000
-    config:
-      JAEGER_ENDPOINT: http://jaeger.monitoring:14268/api/traces
-      OTEL_SERVICE_NAME: mjml-api
     prometheus:
       port: 3000
     probes:

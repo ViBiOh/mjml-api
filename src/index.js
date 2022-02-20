@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import './tracer';
 import cluster from 'cluster';
 import express from 'express';
 import yargs from 'yargs';
