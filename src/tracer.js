@@ -8,6 +8,28 @@ const {
 } = require('@opentelemetry/instrumentation-express');
 const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
 const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
+const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
+
+function ignoreHealthCheck(spanName, spanKind, attributes) {
+  return (
+    spanKind !== opentelemetry.SpanKind.SERVER ||
+    attributes[SemanticAttributes.HTTP_ROUTE] !== '/health'
+  );
+}
+
+function filterSampler(filterFn, parent) {
+  return {
+    shouldSample(ctx, tid, spanName, spanKind, attr, links) {
+      if (!filterFn(spanName, spanKind, attr)) {
+        return { decision: opentelemetry.SamplingDecision.NOT_RECORD };
+      }
+      return parent.shouldSample(ctx, tid, spanName, spanKind, attr, links);
+    },
+    toString() {
+      return `FilterSampler(${parent.toString()})`;
+    },
+  };
+}
 
 const endpoint = process.env.JAEGER_ENDPOINT;
 const serviceName = process.env.OTEL_SERVICE_NAME;
@@ -18,7 +40,7 @@ if (endpoint) {
   );
 
   const sdk = new opentelemetry.NodeSDK({
-    sampler: new AlwaysOnSampler(),
+    sampler: filterSampler(ignoreHealthCheck, new AlwaysOnSampler()),
     traceExporter: new JaegerExporter({
       serviceName,
       endpoint,
