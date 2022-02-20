@@ -26,7 +26,7 @@ spec:
     podAnnotations:
     image:
       name: vibioh/mjml
-      tag: '202202201153' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: '202202201200' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     port: 3000
     config:
       JAEGER_ENDPOINT: http://jaeger.monitoring:14268/api/traces
