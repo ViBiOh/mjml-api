@@ -11,17 +11,15 @@ const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
 const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
 const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 
-function ignoreHealthCheck(spanName, spanKind, attributes) {
-  return (
-    spanKind !== api.SpanKind.SERVER ||
-    attributes[SemanticAttributes.HTTP_ROUTE] !== '/health'
-  );
+function ignoreMetaEndpoint(spanName, spanKind, attributes) {
+  const route = attributes[SemanticAttributes.HTTP_ROUTE];
+  return route === '/health' || route === '/version' || route === '/metrics';
 }
 
 function filterSampler(filterFn, parent) {
   return {
     shouldSample(ctx, tid, spanName, spanKind, attr, links) {
-      if (!filterFn(spanName, spanKind, attr)) {
+      if (filterFn(spanName, spanKind, attr)) {
         return { decision: api.SamplingDecision.NOT_RECORD };
       }
       return parent.shouldSample(ctx, tid, spanName, spanKind, attr, links);
@@ -41,7 +39,7 @@ if (endpoint) {
   );
 
   const sdk = new opentelemetry.NodeSDK({
-    sampler: filterSampler(ignoreHealthCheck, new AlwaysOnSampler()),
+    sampler: filterSampler(ignoreMetaEndpoint, new AlwaysOnSampler()),
     traceExporter: new JaegerExporter({
       serviceName,
       endpoint,
