@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 
-// eslint-disable-next-line import/newline-after-import, import/order
-import tracer from './tracer';
-tracer('mjml');
-
-/* eslint-disable import/first */
+import './tracer';
 import cluster from 'cluster';
 import express from 'express';
 import yargs from 'yargs';
