@@ -1,4 +1,5 @@
 const opentelemetry = require('@opentelemetry/sdk-node');
+const api = require('@opentelemetry/api');
 const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node');
@@ -12,7 +13,7 @@ const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 
 function ignoreHealthCheck(spanName, spanKind, attributes) {
   return (
-    spanKind !== opentelemetry.SpanKind.SERVER ||
+    spanKind !== api.SpanKind.SERVER ||
     attributes[SemanticAttributes.HTTP_ROUTE] !== '/health'
   );
 }
@@ -21,7 +22,7 @@ function filterSampler(filterFn, parent) {
   return {
     shouldSample(ctx, tid, spanName, spanKind, attr, links) {
       if (!filterFn(spanName, spanKind, attr)) {
-        return { decision: opentelemetry.SamplingDecision.NOT_RECORD };
+        return { decision: api.SamplingDecision.NOT_RECORD };
       }
       return parent.shouldSample(ctx, tid, spanName, spanKind, attr, links);
     },
