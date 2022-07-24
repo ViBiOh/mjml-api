@@ -23,10 +23,15 @@ app: init format style build
 name:
 	@printf "$(APP_NAME)"
 
-## version: Output sha1 of last commit
+## version: Output last commit sha1
 .PHONY: version
 version:
 	@printf "$(shell git rev-parse --short HEAD)"
+
+## version-date: Output last commit date
+.PHONY: version-date
+version-date:
+	@printf "$(shell git log -n 1 "--date=format:%Y%m%d%H%M" "--pretty=format:%cd")"
 
 ## init: Bootstrap your application. e.g. fetch some data files, make some API calls, request user input etc...
 .PHONY: init
