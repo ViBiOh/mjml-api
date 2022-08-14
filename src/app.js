@@ -7,11 +7,11 @@ import promBundle from 'express-prom-bundle';
  * @param  {Object} app Express App
  */
 function init(app) {
-  app.get('/health', (req, res) => {
+  app.get('/health', (_, res) => {
     res.sendStatus(204);
   });
 
-  app.get('/version', (req, res) => {
+  app.get('/version', (_, res) => {
     res.send(process.env.VERSION || 'development');
   });
 
