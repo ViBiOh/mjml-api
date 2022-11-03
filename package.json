@@ -24,7 +24,7 @@
     "express-prom-bundle": "6.5.0",
     "mjml": "4.13.0",
     "prom-client": "14.1.0",
-    "yargs": "17.6.1"
+    "yargs": "17.6.2"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",
