@@ -26,7 +26,7 @@ spec:
     podAnnotations:
     image:
       name: vibioh/mjml
-      tag: '202211232257' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: '202211282328' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     port: 3000
     prometheus:
       port: 3000
