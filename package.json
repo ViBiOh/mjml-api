@@ -33,7 +33,7 @@
     "@babel/node": "7.20.7",
     "@babel/preset-env": "7.20.2",
     "@babel/register": "7.21.0",
-    "@babel/runtime": "7.20.13",
+    "@babel/runtime": "7.21.0",
     "eslint": "8.34.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "8.6.0",
