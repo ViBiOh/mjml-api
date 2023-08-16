@@ -1,6 +1,11 @@
 import mjml2html from 'mjml';
 import { json } from 'body-parser';
 import promBundle from 'express-prom-bundle';
+import opentelemetry from '@opentelemetry/api';
+
+const generatedCounter = opentelemetry.metrics
+  .getMeter('mjml')
+  .createCounter('generated');
 
 /**
  * Init app
@@ -21,6 +26,7 @@ function init(app) {
 
   app.post('/', (req, res) => {
     res.send(mjml2html(req.body.mjml));
+    generatedCounter.add(1);
   });
 }
 
