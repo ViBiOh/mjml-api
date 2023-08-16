@@ -28,6 +28,8 @@ spec:
       name: vibioh/mjml
       tag: '202308152349' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     port: 3000
+    config:
+      OTEL_ENDPOINT_URL: otel-collector.observability:4317
     prometheus:
       port: 3000
     probes:
