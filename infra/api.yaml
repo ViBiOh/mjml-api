@@ -30,6 +30,7 @@ spec:
     port: 3000
     config:
       OTEL_ENDPOINT_URL: otel-collector.observability:4317
+      OTEL_SERVICE_NAME: mjml-api
     prometheus:
       port: 3000
     probes:
