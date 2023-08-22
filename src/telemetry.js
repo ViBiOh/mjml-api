@@ -25,7 +25,7 @@ const sdk = new otelsdk.NodeSDK({
   }),
   instrumentations: [getNodeAutoInstrumentations()],
   views: new View({
-    instrumentName: '@opentelemetry/instrumentation-http',
+    meterName: '@opentelemetry/instrumentation-http',
     attributeKeys: ['http.method', 'http.status_code'],
   }),
 });
