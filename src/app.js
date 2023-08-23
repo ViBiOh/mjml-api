@@ -1,6 +1,5 @@
 import mjml2html from 'mjml';
 import { json } from 'body-parser';
-import promBundle from 'express-prom-bundle';
 import opentelemetry from '@opentelemetry/api';
 
 const generatedCounter = opentelemetry.metrics
@@ -19,8 +18,6 @@ function init(app) {
   app.get('/version', (_, res) => {
     res.send(process.env.VERSION || 'development');
   });
-
-  app.use(promBundle({ includeMethod: true }));
 
   app.use(json());
 

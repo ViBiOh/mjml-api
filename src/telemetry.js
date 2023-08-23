@@ -15,7 +15,11 @@ const sdk = new otelsdk.NodeSDK({
       [SemanticResourceAttributes.SERVICE_NAME]: 'mjml-api',
     }),
   ),
-  instrumentations: [new HttpInstrumentation()],
+  instrumentations: [
+    new HttpInstrumentation({
+      ignoreIncomingPaths: ['/health'],
+    }),
+  ],
   traceExporter: new OTLPTraceExporter({
     url: `http://${process.env.OTEL_ENDPOINT_URL}`,
   }),
