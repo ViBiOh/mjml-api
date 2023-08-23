@@ -4,7 +4,7 @@ import opentelemetry from '@opentelemetry/api';
 
 const generatedCounter = opentelemetry.metrics
   .getMeter('mjml')
-  .createCounter('generated');
+  .createCounter('mjml.generated');
 
 /**
  * Init app
