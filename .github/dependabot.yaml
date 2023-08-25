@@ -9,6 +9,7 @@ updates:
     commit-message:
       prefix: ci
       include: scope
+
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -16,6 +17,16 @@ updates:
     commit-message:
       prefix: chore
       include: scope
+    groups:
+      opentelemetry:
+        patterns:
+          - '@opentelemetry/exporter-*'
+          - '@opentelemetry/instrumentation-*'
+          - '@opentelemetry/sdk-node'
+      babel:
+        patterns:
+          - '@babel/*'
+
   - package-ecosystem: docker
     directory: /
     schedule:
@@ -23,13 +34,3 @@ updates:
     commit-message:
       prefix: chore
       include: scope
-
-groups:
-  opentelemetry:
-    patterns:
-      - '@opentelemetry/exporter-*'
-      - '@opentelemetry/instrumentation-*'
-      - '@opentelemetry/sdk-node'
-  babel:
-    patterns:
-      - '@babel/*'
