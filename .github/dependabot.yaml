@@ -1,5 +1,6 @@
 ---
 version: 2
+
 updates:
   - package-ecosystem: github-actions
     directory: /
@@ -22,3 +23,13 @@ updates:
     commit-message:
       prefix: chore
       include: scope
+
+groups:
+  opentelemetry:
+    patterns:
+      - '@opentelemetry/exporter-*'
+      - '@opentelemetry/instrumentation-*'
+      - '@opentelemetry/sdk-node'
+  babel:
+    patterns:
+      - '@babel/*'
