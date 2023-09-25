@@ -35,13 +35,13 @@
     "yargs": "17.7.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.22.15",
-    "@babel/core": "7.22.20",
+    "@babel/cli": "7.23.0",
+    "@babel/core": "7.23.0",
     "@babel/eslint-parser": "7.22.15",
     "@babel/node": "7.22.19",
     "@babel/preset-env": "7.22.20",
     "@babel/register": "7.22.15",
-    "@babel/runtime": "7.22.15",
+    "@babel/runtime": "7.23.1",
     "eslint": "8.50.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "9.0.0",
