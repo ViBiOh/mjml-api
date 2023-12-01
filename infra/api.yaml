@@ -29,7 +29,7 @@ spec:
       tag: '202311300928' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     port: 3000
     config:
-      OTEL_ENDPOINT_URL: otel-collector.observability:4317
+      OTEL_ENDPOINT_URL: datadog.observability:4317
       OTEL_SERVICE_NAME: mjml-api
     probes:
       readiness: /health
