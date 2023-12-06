@@ -30,6 +30,7 @@ spec:
     port: 3000
     config:
       OTEL_ENDPOINT_URL: datadog.observability:4317
+      OTEL_RESOURCE_ATTRIBUTES: env=production
       OTEL_SERVICE_NAME: mjml-api
     probes:
       readiness: /health
