@@ -20,9 +20,7 @@ updates:
     groups:
       opentelemetry:
         patterns:
-          - '@opentelemetry/exporter-*'
-          - '@opentelemetry/instrumentation-*'
-          - '@opentelemetry/sdk-node'
+          - '@opentelemetry/*'
       babel:
         patterns:
           - '@babel/*'
