@@ -26,7 +26,7 @@ spec:
     podAnnotations:
     image:
       name: vibioh/mjml
-      tag: '202401152257' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: '202401152303' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     port: 3000
     config:
       OTEL_ENDPOINT_URL: datadog.observability:4317
