@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: '0.0.94'
+      version: '0.1.2'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -27,11 +27,23 @@ spec:
     image:
       name: vibioh/mjml
       tag: '202401180928' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+    labels:
+      tags.datadoghq.com/env: "production"
+      tags.datadoghq.com/service: "mjml"
+      tags.datadoghq.com/version: '202401180928' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+    env:
+      - name: VERSION
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.labels['tags.datadoghq.com/version']
+      - name: OTEL_SERVICE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.labels['tags.datadoghq.com/service']
     port: 3000
     config:
       OTEL_ENDPOINT_URL: datadog.observability:4317
       OTEL_RESOURCE_ATTRIBUTES: env=production,git.repository_url=github.com/ViBiOh/mjml-api
-      OTEL_SERVICE_NAME: mjml-api
     probes:
       readiness: /health
     resources:
