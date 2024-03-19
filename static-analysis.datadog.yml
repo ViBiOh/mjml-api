@@ -7,3 +7,4 @@ rulesets:
   - javascript-node-security # rules specific for Node.js security
   - javascript-express # rules specific for express.js security
   - javascript-aws # rules specific for aws sdk security
+  - docker-best-practices # ensure best practices are followed
