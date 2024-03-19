@@ -2,6 +2,7 @@
 
 import cluster from 'cluster';
 import express from 'express';
+import helmet from 'helmet';
 import yargs from 'yargs';
 import app from './app';
 import server from './server';
@@ -25,6 +26,8 @@ function getOptions() {
 
 const options = getOptions();
 const expressApp = express();
+
+expressApp.use(helmet());
 
 if (cluster.isPrimary && options.workerCount > 1) {
   for (let i = 0; i < options.workerCount; i += 1) {

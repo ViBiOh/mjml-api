@@ -38,7 +38,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '21'
       - run: |
           npm install --ignore-scripts --global npm@8
       - name: Build
