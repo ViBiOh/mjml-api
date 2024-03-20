@@ -1,0 +1,45 @@
+---
+name: CodeQL
+
+permissions:
+  actions: none
+  checks: none
+  contents: none
+  deployments: none
+  issues: none
+  packages: none
+  pages: none
+  pull-requests: none
+  repository-projects: none
+  security-events: write
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * 6'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - javascript
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+      - name: Autobuild
+        run: make init build
+      - name: CodeQL
+        uses: github/codeql-action/analyze@v3
