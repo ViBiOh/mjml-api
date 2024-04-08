@@ -7,14 +7,9 @@ import {
   View,
 } from '@opentelemetry/sdk-metrics';
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 
 const sdk = new otelsdk.NodeSDK({
-  resource: new Resource(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: 'mjml-api',
-    }),
-  ),
+  resource: new Resource({}),
   instrumentations: [
     new HttpInstrumentation({
       ignoreIncomingPaths: ['/health'],

@@ -3,7 +3,7 @@ import { json } from 'body-parser';
 import opentelemetry from '@opentelemetry/api';
 
 const generatedCounter = opentelemetry.metrics
-  .getMeter('mjml')
+  .getMeter('github.com/ViBiOh/mjml-api')
   .createCounter('mjml.generated');
 
 /**
