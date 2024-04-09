@@ -6,11 +6,13 @@ import {
   PeriodicExportingMetricReader,
   View,
 } from '@opentelemetry/sdk-metrics';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { Resource } from '@opentelemetry/resources';
 
 const sdk = new otelsdk.NodeSDK({
   resource: new Resource({}),
   instrumentations: [
+    getNodeAutoInstrumentations(),
     new HttpInstrumentation({
       ignoreIncomingPaths: ['/health'],
     }),
