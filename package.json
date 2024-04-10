@@ -9,7 +9,7 @@
     "format": "./node_modules/prettier/bin/prettier.cjs --write \"src/**/*.js\"",
     "style": "./node_modules/eslint/bin/eslint.js --fix \"src/**/*.js\"",
     "build": "./node_modules/@babel/cli/bin/babel.js src --out-dir dist",
-    "start": "OTEL_ENDPOINT_URL=localhost:4317 ./node_modules/@babel/node/bin/babel-node.js --require ./src/telemetry.js src/index.js"
+    "start": "./node_modules/@babel/node/bin/babel-node.js --require ./src/telemetry.js src/index.js"
   },
   "keywords": [
     "mjml",

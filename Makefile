@@ -65,3 +65,8 @@ build:
 .PHONY: run
 run:
 	npm start
+
+## config: Create local configuration
+.PHONY: config
+config:
+	@cp .env.example .env

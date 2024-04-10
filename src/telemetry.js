@@ -2,17 +2,19 @@ import * as otelsdk from '@opentelemetry/sdk-node';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-grpc';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 import {
   PeriodicExportingMetricReader,
   View,
 } from '@opentelemetry/sdk-metrics';
-import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { Resource } from '@opentelemetry/resources';
 
 const sdk = new otelsdk.NodeSDK({
-  resource: new Resource({}),
+  autoDetectResources: false,
+  resource: new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: process.env.OTEL_SERVICE_NAME,
+  }),
   instrumentations: [
-    getNodeAutoInstrumentations(),
     new HttpInstrumentation({
       ignoreIncomingPaths: ['/health'],
     }),
@@ -31,3 +33,5 @@ const sdk = new otelsdk.NodeSDK({
   }),
 });
 sdk.start();
+
+process.on('SIGTERM', sdk.shutdown);
