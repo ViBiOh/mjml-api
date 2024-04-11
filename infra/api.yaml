@@ -43,7 +43,6 @@ spec:
     port: 3000
     config:
       OTEL_ENDPOINT_URL: datadog.observability:4317
-      OTEL_NODE_RESOURCE_DETECTORS: env
       OTEL_RESOURCE_ATTRIBUTES: env=production,git.repository_url=github.com/ViBiOh/mjml-api
     probes:
       readiness: /health

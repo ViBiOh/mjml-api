@@ -7,13 +7,13 @@ import {
   PeriodicExportingMetricReader,
   View,
 } from '@opentelemetry/sdk-metrics';
-import { Resource } from '@opentelemetry/resources';
+import { Resource, envDetector } from '@opentelemetry/resources';
 
 const sdk = new otelsdk.NodeSDK({
-  autoDetectResources: false,
   resource: new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: process.env.OTEL_SERVICE_NAME,
   }),
+  resourceDetectors: [envDetector],
   instrumentations: [
     new HttpInstrumentation({
       ignoreIncomingPaths: ['/health'],
