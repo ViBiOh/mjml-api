@@ -7,7 +7,10 @@ ENV NODE_ENV production
 ENTRYPOINT [ "/usr/local/bin/node", "--require", "./telemetry.js", "./index.js" ]
 
 ARG VERSION
-ENV VERSION=${VERSION}
+ENV VERSION ${VERSION}
+
+ARG GIT_SHA
+ENV GIT_SHA ${GIT_SHA}
 
 COPY dist /home/node/app/
 COPY node_modules /home/node/app/node_modules/

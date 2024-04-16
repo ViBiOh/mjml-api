@@ -12,6 +12,8 @@ import { Resource, envDetector } from '@opentelemetry/resources';
 const sdk = new otelsdk.NodeSDK({
   resource: new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: process.env.OTEL_SERVICE_NAME,
+    [SemanticResourceAttributes.SERVICE_VERSION]: process.env.VERSION,
+    'git.commit.sha': process.env.GIT_SHA,
   }),
   resourceDetectors: [envDetector],
   instrumentations: [
