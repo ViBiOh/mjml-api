@@ -1,6 +1,8 @@
 import mjml2html from 'mjml';
-import { json } from 'body-parser';
+import bodyParser from 'body-parser';
 import opentelemetry from '@opentelemetry/api';
+
+const { json } = bodyParser;
 
 const generatedCounter = opentelemetry.metrics
   .getMeter('github.com/ViBiOh/mjml-api')

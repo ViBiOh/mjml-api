@@ -1,6 +1,7 @@
 {
   "name": "mjml-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "MJML API Conversion",
   "repository": "https://github.com/ViBiOh/mjml-api",
   "main": "dist/index.js",
@@ -8,8 +9,7 @@
     "init": "curl --disable --silent --show-error --location --max-time 30 'https://raw.githubusercontent.com/ViBiOh/scripts/main/bootstrap' | bash -s 'git_hooks'",
     "format": "./node_modules/prettier/bin/prettier.cjs --write \"src/**/*.js\"",
     "style": "./node_modules/eslint/bin/eslint.js --fix \"src/**/*.js\"",
-    "build": "./node_modules/@babel/cli/bin/babel.js src --out-dir dist",
-    "start": "./node_modules/@babel/node/bin/babel-node.js --require ./src/telemetry.js src/index.js"
+    "start": "node src/index.js"
   },
   "keywords": [
     "mjml",
@@ -34,20 +34,11 @@
     "express": "4.19.2",
     "helmet": "7.1.0",
     "mjml": "4.15.3",
+    "winston": "3.13.0",
     "yargs": "17.7.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.24.1",
-    "@babel/core": "7.24.4",
-    "@babel/eslint-parser": "7.24.1",
-    "@babel/node": "7.23.9",
-    "@babel/preset-env": "7.24.4",
-    "@babel/register": "7.23.7",
-    "@babel/runtime": "7.24.4",
-    "eslint": "8.57.0",
-    "eslint-config-airbnb-base": "15.0.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-import": "2.29.1",
+    "eslint": "9.0.0",
     "prettier": "3.2.5"
   },
   "prettier": {

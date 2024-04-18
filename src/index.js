@@ -3,9 +3,12 @@
 import cluster from 'cluster';
 import express from 'express';
 import helmet from 'helmet';
-import yargs from 'yargs';
-import app from './app';
-import server from './server';
+import rawYargs from 'yargs';
+import telemetry from './telemetry.js';
+import app from './app.js';
+import server from './server.js';
+
+const yargs = rawYargs();
 
 /**
  * Get options from yargs.
@@ -35,7 +38,7 @@ if (cluster.isPrimary && options.workerCount > 1) {
   }
 
   cluster.on('exit', (worker) => {
-    console.log(`worker ${worker.process.pid} died`);
+    telemetry.logger.info(`worker ${worker.process.pid} died`);
   });
 } else {
   app.init(expressApp);

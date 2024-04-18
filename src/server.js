@@ -1,3 +1,5 @@
+import telemetry from './telemetry.js';
+
 /**
  * Args definition
  * @param  {Object} yargs Yargs object
@@ -19,7 +21,7 @@ function args(yargs) {
  */
 function init(app, options) {
   app.listen(options.port, () =>
-    console.log(`Starting HTTP server on port ${options.port}`),
+    telemetry.logger.info(`Starting HTTP server on port ${options.port}`),
   );
 }
 
