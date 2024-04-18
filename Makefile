@@ -57,7 +57,6 @@ style:
 ## build: Build the application.
 .PHONY: build
 build:
-	npm run build
 	rm -rf node_modules/
 	npm i --production
 
