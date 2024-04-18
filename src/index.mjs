@@ -4,9 +4,9 @@ import cluster from 'cluster';
 import express from 'express';
 import helmet from 'helmet';
 import rawYargs from 'yargs';
-import telemetry from './telemetry.js';
-import app from './app.js';
-import server from './server.js';
+import telemetry from './telemetry.mjs';
+import app from './app.mjs';
+import server from './server.mjs';
 
 const yargs = rawYargs();
 

@@ -1,15 +1,14 @@
 {
   "name": "mjml-api",
   "version": "1.0.0",
-  "type": "module",
   "description": "MJML API Conversion",
   "repository": "https://github.com/ViBiOh/mjml-api",
   "main": "dist/index.js",
   "scripts": {
     "init": "curl --disable --silent --show-error --location --max-time 30 'https://raw.githubusercontent.com/ViBiOh/scripts/main/bootstrap' | bash -s 'git_hooks'",
-    "format": "./node_modules/prettier/bin/prettier.cjs --write \"src/**/*.js\"",
-    "style": "./node_modules/eslint/bin/eslint.js --fix \"src/**/*.js\"",
-    "start": "node src/index.js"
+    "format": "./node_modules/prettier/bin/prettier.cjs --write \"src/**/*.mjs\"",
+    "style": "./node_modules/eslint/bin/eslint.js --fix \"src/**/*.mjs\"",
+    "start": "node src/index.mjs"
   },
   "keywords": [
     "mjml",

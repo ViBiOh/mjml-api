@@ -1,4 +1,4 @@
-import telemetry from './telemetry.js';
+import telemetry from './telemetry.mjs';
 
 /**
  * Args definition

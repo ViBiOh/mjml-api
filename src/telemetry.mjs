@@ -59,6 +59,8 @@ const sdk = new otelsdk.NodeSDK({
 });
 sdk.start();
 
+console.log('sdk', typeof sdk, sdk);
+
 process.on('SIGTERM', sdk.shutdown);
 
 export default {
