@@ -11,6 +11,8 @@ import {
 } from '@opentelemetry/sdk-metrics';
 import { Resource, envDetector } from '@opentelemetry/resources';
 
+let resourceAttributes;
+
 function tracingFormat() {
   return winston.format((info) => {
     const span = opentelemetry.trace.getSpan(opentelemetry.context.active());
@@ -21,6 +23,10 @@ function tracingFormat() {
 
       info.trace_id = BigInt(`0x${traceIdEnd}`).toString();
       info.span_id = BigInt(`0x${spanId}`).toString();
+    }
+
+    for (const key in resourceAttributes) {
+      info[key] = resourceAttributes[key];
     }
 
     return info;
@@ -59,7 +65,10 @@ const sdk = new otelsdk.NodeSDK({
 });
 sdk.start();
 
-console.log('sdk', typeof sdk, sdk);
+// ugly but how else?
+sdk._resource._asyncAttributesPromise.then((attributes) => {
+  resourceAttributes = attributes;
+});
 
 process.on('SIGTERM', sdk.shutdown);
 
