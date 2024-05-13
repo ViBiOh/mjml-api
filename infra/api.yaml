@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: mjml
@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: '0.1.2'
+      version: "0.1.2"
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -26,11 +26,11 @@ spec:
     podAnnotations:
     image:
       name: vibioh/mjml
-      tag: '202405080012' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: "202405080012" # {"$imagepolicy": "default:flux-mjml-api:tag"}
     labels:
-      tags.datadoghq.com/env: 'production'
-      tags.datadoghq.com/service: 'mjml'
-      tags.datadoghq.com/version: '202405080012' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tags.datadoghq.com/env: "production"
+      tags.datadoghq.com/service: "mjml"
+      tags.datadoghq.com/version: "202405080012" # {"$imagepolicy": "default:flux-mjml-api:tag"}
     env:
       - name: VERSION
         valueFrom:
