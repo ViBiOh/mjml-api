@@ -39,9 +39,5 @@
   "devDependencies": {
     "eslint": "9.2.0",
     "prettier": "3.2.5"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all"
   }
 }
