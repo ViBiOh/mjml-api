@@ -26,11 +26,11 @@ spec:
     podAnnotations:
     image:
       name: vibioh/mjml
-      tag: '202405152326' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: '202405172328' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     labels:
       tags.datadoghq.com/env: 'production'
       tags.datadoghq.com/service: 'mjml'
-      tags.datadoghq.com/version: '202405152326' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tags.datadoghq.com/version: '202405172328' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     env:
       - name: VERSION
         valueFrom:
