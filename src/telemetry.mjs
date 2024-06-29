@@ -2,7 +2,10 @@ import * as otelsdk from '@opentelemetry/sdk-node';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-grpc';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import {
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
+} from '@opentelemetry/semantic-conventions';
 import opentelemetry from '@opentelemetry/api';
 import winston from 'winston';
 import {
@@ -40,8 +43,8 @@ const logger = winston.createLogger({
 
 const sdk = new otelsdk.NodeSDK({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: process.env.OTEL_SERVICE_NAME,
-    [SemanticResourceAttributes.SERVICE_VERSION]: process.env.VERSION,
+    [SEMRESATTRS_SERVICE_NAME]: process.env.OTEL_SERVICE_NAME,
+    [SEMRESATTRS_SERVICE_VERSION]: process.env.VERSION,
     'git.commit.sha': process.env.GIT_SHA,
   }),
   resourceDetectors: [envDetector],
