@@ -31,7 +31,7 @@
     "@opentelemetry/semantic-conventions": "1.27.0",
     "body-parser": "1.20.3",
     "express": "5.0.0",
-    "helmet": "7.1.0",
+    "helmet": "8.0.0",
     "mjml": "4.15.3",
     "winston": "3.14.2",
     "yargs": "17.7.2"
