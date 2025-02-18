@@ -9,6 +9,8 @@ updates:
     commit-message:
       prefix: ci
       include: scope
+    assignees:
+      - ViBiOh
 
   - package-ecosystem: npm
     directory: /
@@ -17,13 +19,15 @@ updates:
     commit-message:
       prefix: chore
       include: scope
+    assignees:
+      - ViBiOh
     groups:
       opentelemetry:
         patterns:
-          - '@opentelemetry/*'
+          - "@opentelemetry/*"
       babel:
         patterns:
-          - '@babel/*'
+          - "@babel/*"
 
   - package-ecosystem: docker
     directory: /
@@ -32,3 +36,5 @@ updates:
     commit-message:
       prefix: chore
       include: scope
+    assignees:
+      - ViBiOh
