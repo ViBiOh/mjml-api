@@ -50,7 +50,9 @@ const sdk = new otelsdk.NodeSDK({
   resourceDetectors: [envDetector],
   instrumentations: [
     new HttpInstrumentation({
-      ignoreIncomingPaths: ['/health'],
+      ignoreIncomingRequestHook: (request) => {
+        return request.url.startWith('/health');
+      },
     }),
   ],
   traceExporter: new OTLPTraceExporter({
