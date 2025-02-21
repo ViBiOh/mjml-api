@@ -51,7 +51,7 @@ const sdk = new otelsdk.NodeSDK({
   instrumentations: [
     new HttpInstrumentation({
       ignoreIncomingRequestHook: (request) => {
-        return request.url.startWith('/health');
+        return request.url.startsWith('/health');
       },
     }),
   ],
