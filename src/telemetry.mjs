@@ -8,11 +8,8 @@ import {
 } from '@opentelemetry/semantic-conventions';
 import opentelemetry from '@opentelemetry/api';
 import winston from 'winston';
-import {
-  PeriodicExportingMetricReader,
-  View,
-} from '@opentelemetry/sdk-metrics';
-import { Resource, envDetector } from '@opentelemetry/resources';
+import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
+import { resourceFromAttributes, envDetector } from '@opentelemetry/resources';
 
 let resourceAttributes;
 
@@ -42,7 +39,7 @@ const logger = winston.createLogger({
 });
 
 const sdk = new otelsdk.NodeSDK({
-  resource: new Resource({
+  resource: new resourceFromAttributes({
     [SEMRESATTRS_SERVICE_NAME]: process.env.OTEL_SERVICE_NAME,
     [SEMRESATTRS_SERVICE_VERSION]: process.env.VERSION,
     'git.commit.sha': process.env.GIT_SHA,
@@ -63,15 +60,17 @@ const sdk = new otelsdk.NodeSDK({
       url: `http://${process.env.OTEL_ENDPOINT_URL}`,
     }),
   }),
-  views: new View({
-    meterName: '@opentelemetry/instrumentation-http',
-    attributeKeys: ['http.method', 'http.status_code'],
-  }),
+  views: [
+    {
+      meterName: '@opentelemetry/instrumentation-http',
+      attributeKeys: ['http.method', 'http.status_code'],
+    },
+  ],
 });
 sdk.start();
 
 // ugly but how else?
-sdk._resource._asyncAttributesPromise.then((attributes) => {
+sdk._resource.waitForAsyncAttributes().then((attributes) => {
   resourceAttributes = attributes;
 });
 
