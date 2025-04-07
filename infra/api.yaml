@@ -25,7 +25,7 @@ spec:
     nameOverride: mjml
     podAnnotations:
     image:
-      name: vibioh/mjml
+      name: rg.fr-par.scw.cloud/vibioh/mjml
       tag: '202504042314' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     labels:
       tags.datadoghq.com/env: 'production'
