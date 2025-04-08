@@ -26,11 +26,11 @@ spec:
     podAnnotations:
     image:
       name: rg.fr-par.scw.cloud/vibioh/mjml
-      tag: '202504072220' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: '202504080903' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     labels:
       tags.datadoghq.com/env: 'production'
       tags.datadoghq.com/service: 'mjml'
-      tags.datadoghq.com/version: '202504072220' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tags.datadoghq.com/version: '202504080903' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     env:
       - name: VERSION
         valueFrom:
