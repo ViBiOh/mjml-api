@@ -22,7 +22,7 @@ on:
       - main
 
 env:
-  SCRIPTS_NO_INTERACTIVE: "true"
+  SCRIPTS_NO_INTERACTIVE: 'true'
 
 defaults:
   run:
@@ -38,7 +38,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
       - run: |
           npm install --ignore-scripts --global npm@8
       - name: Build
@@ -53,6 +53,7 @@ jobs:
           DOCKER_REGISTRY: ${{ vars.DOCKER_REGISTRY }}
           DOCKER_NAMESPACE: ${{ vars.DOCKER_NAMESPACE }}
           SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+          DOCKER_ARCHS: linux/amd64 linux/arm64
         run: |
           curl --disable --silent --show-error --location --max-time 30 "https://raw.githubusercontent.com/ViBiOh/scripts/main/bootstrap.sh" | bash -s -- "-c" "release.sh"
           docker login "${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}" -u nologin --password-stdin <<< "${SCW_SECRET_KEY}"
