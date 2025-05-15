@@ -10,10 +10,6 @@ import server from './server.mjs';
 
 const yargs = rawYargs();
 
-/**
- * Get options from yargs.
- * @return {Object} Yargs options
- */
 function getOptions() {
   const args = server.args(yargs);
 
@@ -22,6 +18,14 @@ function getOptions() {
     type: 'Number',
     describe: 'Worker count for cluster mode',
     default: 1,
+  });
+
+  args.options('listenDuration', {
+    required: false,
+    type: 'Number',
+    describe:
+      'Number of seconds during the server is started before shutting down.',
+    default: 0,
   });
 
   return args.help('help').strict().argv;

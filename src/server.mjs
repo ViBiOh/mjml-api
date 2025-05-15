@@ -20,9 +20,17 @@ function args(yargs) {
  * @param  {Object} options Yargs options
  */
 function init(app, options) {
-  app.listen(options.port, () =>
-    telemetry.logger.info(`Starting HTTP server on port ${options.port}`),
-  );
+  const server = app.listen(options.port, () => {
+    telemetry.logger.info(`Starting HTTP server on port ${options.port}`);
+  });
+
+  if (options.listenDuration !== 0) {
+    telemetry.logger.info(
+      `HTTP server will stop in ${options.listenDuration}s`,
+    );
+
+    setTimeout(() => server.close(() => {}), options.listenDuration * 1000);
+  }
 }
 
 export default {
