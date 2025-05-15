@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mjml
+  name: mailer
   namespace: default
 spec:
   interval: 120m
   chart:
     spec:
-      chart: app
-      version: '0.1.2'
+      chart: cron
+      version: '0.0.36'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -22,8 +22,9 @@ spec:
   rollback:
     cleanupOnFail: true
   values:
-    nameOverride: mjml
-    podAnnotations:
+    nameOverride: mailer
+    schedule: '0 8 * * *'
+    timeZone: 'Europe/Paris'
     image:
       name: rg.fr-par.scw.cloud/vibioh/mjml
       tag: '202505152351' # {"$imagepolicy": "default:flux-mjml-api:tag"}
@@ -42,6 +43,7 @@ spec:
             fieldPath: metadata.labels['tags.datadoghq.com/service']
     port: 3000
     config:
+      MJML_LISTEN_DURATION: '180'
       OTEL_ENDPOINT_URL: datadog.observability:4317
       OTEL_RESOURCE_ATTRIBUTES: env=production,git.repository_url=github.com/ViBiOh/mjml-api
     probes:

@@ -11,7 +11,7 @@ import server from './server.mjs';
 const yargs = rawYargs();
 
 function getOptions() {
-  const args = server.args(yargs);
+  const args = server.args(yargs).env('MJML');
 
   args.options('workerCount', {
     required: false,
