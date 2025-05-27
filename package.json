@@ -34,7 +34,7 @@
     "helmet": "8.1.0",
     "mjml": "4.15.3",
     "winston": "3.17.0",
-    "yargs": "17.7.2"
+    "yargs": "18.0.0"
   },
   "devDependencies": {
     "eslint": "9.27.0",
