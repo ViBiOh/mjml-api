@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -28,11 +27,11 @@ spec:
     nameOverride: mjml
     image:
       name: rg.fr-par.scw.cloud/vibioh/mjml
-      tag: '202505310717' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: '202506012134' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     labels:
       tags.datadoghq.com/env: 'production'
       tags.datadoghq.com/service: 'mjml'
-      tags.datadoghq.com/version: '202505310717' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tags.datadoghq.com/version: '202506012134' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     env:
       - name: VERSION
         valueFrom:
