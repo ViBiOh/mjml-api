@@ -24,8 +24,7 @@ const options = yargs(hideBin(process.argv))
       'Number of seconds during the server is started before shutting down.',
     default: 0,
   })
-  .help('help')
-  .strict().argv;
+  .help('help').argv;
 
 const expressApp = express();
 
