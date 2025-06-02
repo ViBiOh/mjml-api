@@ -43,6 +43,7 @@ spec:
             fieldPath: metadata.labels['tags.datadoghq.com/service']
     config:
       MJML_LISTEN_DURATION: '180'
+      MJML_LISTEN_PORT: '3000'
       OTEL_ENDPOINT_URL: datadog.observability:4317
       OTEL_RESOURCE_ATTRIBUTES: env=production,git.repository_url=github.com/ViBiOh/mjml-api
     port: 3000

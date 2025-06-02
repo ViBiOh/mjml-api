@@ -24,11 +24,17 @@ const options = yargs(hideBin(process.argv))
       'Number of seconds during the server is started before shutting down.',
     default: 0,
   })
-  .options('port', {
-    required: false,
+  .options('listenPort', {
+    required: true,
     type: 'Number',
     describe: 'Listening port',
     default: 3000,
+  })
+  .options('listenHost', {
+    required: false,
+    type: 'string',
+    describe: 'Listening host',
+    default: '',
   })
   .help('help').argv;
 

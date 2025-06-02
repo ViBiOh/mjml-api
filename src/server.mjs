@@ -6,8 +6,10 @@ import telemetry from './telemetry.mjs';
  * @param  {Object} options Yargs options
  */
 function init(app, options) {
-  const server = app.listen(options.port, () => {
-    telemetry.logger.info(`Starting HTTP server on port ${options.port}`);
+  const server = app.listen(options.port, options.host, () => {
+    telemetry.logger.info(
+      `Starting HTTP server on ${options.host}:${options.port}`,
+    );
   });
 
   if (options.listenDuration !== 0) {
