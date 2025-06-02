@@ -24,6 +24,12 @@ const options = yargs(hideBin(process.argv))
       'Number of seconds during the server is started before shutting down.',
     default: 0,
   })
+  .options('port', {
+    required: false,
+    type: 'Number',
+    describe: 'Listening port',
+    default: 3000,
+  })
   .help('help').argv;
 
 const expressApp = express();

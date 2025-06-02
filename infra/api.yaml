@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: cron
-      version: '0.0.36'
+      version: '0.0.37'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -45,8 +45,7 @@ spec:
       MJML_LISTEN_DURATION: '180'
       OTEL_ENDPOINT_URL: datadog.observability:4317
       OTEL_RESOURCE_ATTRIBUTES: env=production,git.repository_url=github.com/ViBiOh/mjml-api
-    probes:
-      readiness: /health
+    port: 3000
     resources:
       limits:
         memory: 128Mi
