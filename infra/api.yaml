@@ -27,11 +27,11 @@ spec:
     nameOverride: mjml
     image:
       name: rg.fr-par.scw.cloud/vibioh/mjml
-      tag: '202506030004' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tag: '202506130742' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     labels:
       tags.datadoghq.com/env: 'production'
       tags.datadoghq.com/service: 'mjml'
-      tags.datadoghq.com/version: '202506030004' # {"$imagepolicy": "default:flux-mjml-api:tag"}
+      tags.datadoghq.com/version: '202506130742' # {"$imagepolicy": "default:flux-mjml-api:tag"}
     env:
       - name: VERSION
         valueFrom:
