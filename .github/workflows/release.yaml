@@ -33,7 +33,7 @@ jobs:
       gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: GPG
         id: import_gpg
         if: ${{ env.gpg_private_key != '' }}
