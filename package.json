@@ -30,7 +30,7 @@
     "@opentelemetry/sdk-node": "0.208.0",
     "@opentelemetry/semantic-conventions": "1.38.0",
     "body-parser": "2.2.1",
-    "express": "5.1.0",
+    "express": "5.2.0",
     "helmet": "8.1.0",
     "mjml": "4.17.1",
     "winston": "3.18.3",
