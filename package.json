@@ -38,6 +38,6 @@
   },
   "devDependencies": {
     "eslint": "9.39.1",
-    "prettier": "3.7.3"
+    "prettier": "3.7.4"
   }
 }
