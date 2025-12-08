@@ -33,7 +33,7 @@
     "express": "5.2.1",
     "helmet": "8.1.0",
     "mjml": "4.17.2",
-    "winston": "3.18.3",
+    "winston": "3.19.0",
     "yargs": "18.0.0"
   },
   "devDependencies": {
