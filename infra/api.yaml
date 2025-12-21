@@ -7,8 +7,8 @@ spec:
   interval: 120m
   chart:
     spec:
-      chart: cron
-      version: '0.0.37'
+      chart: app
+      version: '0.1.7'
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -22,8 +22,6 @@ spec:
   rollback:
     cleanupOnFail: true
   values:
-    schedule: '59 7 * * *'
-    timeZone: 'Europe/Paris'
     nameOverride: mjml
     image:
       name: rg.fr-par.scw.cloud/vibioh/mjml
@@ -52,3 +50,5 @@ spec:
         memory: 128Mi
       requests:
         memory: 128Mi
+    autoscaling:
+      enabled: false
