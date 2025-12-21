@@ -28,7 +28,7 @@ Options:
 ### HTTP Usage
 
 ```bash
-curl -H 'Content-type: application/json' http://localhost:3000 -d '{"mjml":"<mjml><mj-body></mj-body></mjml>"}'
+curl -H 'Content-type: application/json' http://127.0.0.1:3000 -d '{"mjml":"<mjml><mj-body></mj-body></mjml>"}'
 
 {
   "html":"
