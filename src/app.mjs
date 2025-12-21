@@ -17,6 +17,10 @@ function init(app) {
     res.sendStatus(204);
   });
 
+  app.get('/ready', (_, res) => {
+    res.sendStatus(204);
+  });
+
   app.get('/version', (_, res) => {
     res.send(process.env.VERSION || 'development');
   });
