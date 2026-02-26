@@ -28,7 +28,7 @@
     "@opentelemetry/resources": "2.5.1",
     "@opentelemetry/sdk-metrics": "2.5.1",
     "@opentelemetry/sdk-node": "0.212.0",
-    "@opentelemetry/semantic-conventions": "1.39.0",
+    "@opentelemetry/semantic-conventions": "1.40.0",
     "body-parser": "2.2.2",
     "express": "5.2.1",
     "helmet": "8.1.0",
