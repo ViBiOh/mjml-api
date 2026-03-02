@@ -2,6 +2,7 @@ import * as otelsdk from '@opentelemetry/sdk-node';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-grpc';
+import { RuntimeNodeInstrumentation } from '@opentelemetry/instrumentation-runtime-node';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -46,6 +47,7 @@ const sdk = new otelsdk.NodeSDK({
   }),
   resourceDetectors: [envDetector],
   instrumentations: [
+    new RuntimeNodeInstrumentation({}),
     new HttpInstrumentation({
       ignoreIncomingRequestHook: (request) => {
         return request.url.startsWith('/health');
