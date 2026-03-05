@@ -46,7 +46,7 @@ jobs:
           make
           git --no-pager diff && git diff --quiet
       - name: Setup Docker
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
       - name: Docker
         if: env.SCW_SECRET_KEY
         env:
