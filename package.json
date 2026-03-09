@@ -38,7 +38,7 @@
     "yargs": "18.0.0"
   },
   "devDependencies": {
-    "eslint": "10.0.2",
+    "eslint": "10.0.3",
     "prettier": "3.8.1"
   }
 }
