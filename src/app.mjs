@@ -27,8 +27,9 @@ function init(app) {
 
   app.use(json());
 
-  app.post('/', (req, res) => {
-    res.send(mjml2html(req.body.mjml));
+  app.post('/', async (req, res) => {
+    const result = await mjml2html(req.body.mjml);
+    res.send(result);
     generatedCounter.add(1);
   });
 }

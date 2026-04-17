@@ -19,16 +19,19 @@ Be careful when using the CLI values, if someone list the processes on the syste
 ```bash
 node dist/index.js --help
 Options:
-  --version      Show version number                                   [boolean]
-  --port         Listening port                                  [default: 3000]
-  --workerCount  Worker count for cluster mode                      [default: 1]
-  --help         Show help                                             [boolean]
+  --version         Show version number                                [boolean]
+  --workerCount     Worker count for cluster mode                   [default: 1]
+  --listenDuration  Number of seconds during the server is started before
+                    shutting down.                                  [default: 0]
+  --listenPort      Listening port                    [required] [default: 3000]
+  --listenHost      Listening host                        [string] [default: ""]
+  --help            Show help                                          [boolean]
 ```
 
 ### HTTP Usage
 
 ```bash
-curl -H 'Content-type: application/json' http://127.0.0.1:3000 -d '{"mjml":"<mjml><mj-body></mj-body></mjml>"}'
+curl --request POST --header 'Content-type: application/json' http://127.0.0.1:3000 --data '{"mjml":"<mjml><mj-body></mj-body></mjml>"}'
 
 {
   "html":"
