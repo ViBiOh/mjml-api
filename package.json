@@ -33,7 +33,7 @@
     "body-parser": "2.2.2",
     "express": "5.2.1",
     "helmet": "8.1.0",
-    "mjml": "5.0.1",
+    "mjml": "5.1.0",
     "winston": "3.19.0",
     "yargs": "18.0.0"
   },
