@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: '0.2.0'
+      version: "0.2.0"
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -40,8 +40,8 @@ spec:
           fieldRef:
             fieldPath: metadata.labels['tags.datadoghq.com/service']
     config:
-      MJML_LISTEN_PORT: '3000'
-      OTEL_ENDPOINT_URL: datadog.observability:4317
+      MJML_LISTEN_PORT: "3000"
+      OTEL_ENDPOINT_URL: otel-collector.observability:4317
       OTEL_RESOURCE_ATTRIBUTES: env=production,git.repository_url=github.com/ViBiOh/mjml-api
     port: 3000
     resources:
