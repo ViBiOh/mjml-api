@@ -24,10 +24,7 @@ updates:
     groups:
       opentelemetry:
         patterns:
-          - "@opentelemetry/*"
-      babel:
-        patterns:
-          - "@babel/*"
+          - '@opentelemetry/*'
 
   - package-ecosystem: docker
     directory: /

@@ -17,7 +17,7 @@ The application can be configured by passing CLI args described below or their e
 Be careful when using the CLI values, if someone list the processes on the system, they will appear in plain-text. Pass secrets by environment variables: it's less easily visible.
 
 ```bash
-node dist/index.js --help
+node src/index.mjs --help
 Options:
   --version         Show version number                                [boolean]
   --workerCount     Worker count for cluster mode                   [default: 1]
@@ -27,6 +27,10 @@ Options:
   --listenHost      Listening host                        [string] [default: ""]
   --help            Show help                                          [boolean]
 ```
+
+Telemetry is configured with environment variables: `OTEL_ENDPOINT_URL` (host:port of an OTLP gRPC collector, required unless `OTEL_SDK_DISABLED=true`), `OTEL_SERVICE_NAME` and `OTEL_RESOURCE_ATTRIBUTES`.
+
+The application stops gracefully on `SIGTERM` and `SIGINT`.
 
 ### HTTP Usage
 
@@ -43,3 +47,5 @@ curl --request POST --header 'Content-type: application/json' http://127.0.0.1:3
   "errors":[]
 }
 ```
+
+Invalid requests (not a JSON object, missing or non-string `mjml`, malformed MJML) are answered with a `400` and a body like `{"error":"..."}`. Bodies larger than 100kb are answered with a `413`.

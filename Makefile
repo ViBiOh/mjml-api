@@ -16,7 +16,7 @@ help: Makefile
 
 ## app: Build whole app
 .PHONY: app
-app: init format style build
+app: init format style test build
 
 ## name: Output name of app
 .PHONY: name
@@ -53,11 +53,15 @@ format:
 style:
 	npm run style
 
-## build: Build the application.
+## build: Check that the application sources are valid.
 .PHONY: build
 build:
-	rm -rf node_modules/
-	npm i --production
+	node --check src/*.mjs
+
+## test: Run tests
+.PHONY: test
+test:
+	npm test
 
 ## run: Locally run the application, e.g. node index.js, python -m myapp, go run myapp etc ...
 .PHONY: run
