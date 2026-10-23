@@ -23,6 +23,10 @@ function start(args) {
         clearInterval(timer);
         resolve();
       }
+
+      if (child.exitCode) {
+        clearInterval(timer);
+      }
     }, 50);
   });
 
